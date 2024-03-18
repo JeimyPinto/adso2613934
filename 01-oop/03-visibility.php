@@ -21,12 +21,19 @@
             }
 
             table {
-                td {
-                    border: 1px solid #fff;
-                    border-collapse: collapse;
-                    width: 20px;
-                    height: 20px;
+                border-collapse: collapse;
+
+                tr {
+                    td {
+                        padding: 8px;
+                        border: 1px solid #fff;
+                    }
                 }
+
+                tr:nth-child(odd) {
+                    background-color: #fff2;
+                }
+
 
             }
         }
@@ -72,7 +79,7 @@
                     for ($i = 0; $i < $this->nr; $i++) {
                         $content .= "<tr>";
                         for ($j = 0; $j < $this->nc; $j++) {
-                            $content .= "<td></td>";
+                            $content .= "<td>" . $i . " , " . $j . "</td>";
                         }
                         $content .= "</tr>";
                     }
@@ -86,14 +93,7 @@
 
             ?>
             <h2>Table Maker</h2>
-            <?php
-            if (isset($_POST['nr']) && isset($_POST['nc'])) {
-                $rows = $_POST['nr'];
-                $columns = $_POST['nc'];
-                $table = new TableMaker($rows, $columns);
-                $table->drawTable();
-            }
-            ?>
+
             <form action="" method="post">
                 <label>
                     <p>Rows:</p>
@@ -107,8 +107,18 @@
                 </label>
                 <button> Make Table </button>
             </form>
+            <?php
+            if (isset($_POST['nr']) && isset($_POST['nc'])) {
+                $rows = $_POST['nr'];
+                $columns = $_POST['nc'];
+                $table = new TableMaker($rows, $columns);
+                $table->drawTable();
+            }
+            ?>
         </section>
+
     </main>
+
 </body>
 
 </html>
