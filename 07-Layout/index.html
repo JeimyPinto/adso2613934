@@ -18,13 +18,14 @@
             <img src="images/logo-welcome.svg" alt="">
         </header>
         <section class="slider owl-carousel owl-theme">
-            <img src="images/slide01.png" alt="Logo de la Aplicación">
-            <img src="images/slide01.png" alt="Logo de la Aplicación">
-            <img src="images/slide01.png" alt="Logo de la Aplicación">
+            <img src="images/slide01.png" alt="Logo de la Aplicación" class="item">
+            <img src="images/slide01.png" alt="Logo de la Aplicación" class="item">
+            <img src="images/slide01.png" alt="Logo de la Aplicación" class="item">
         </section>
         <footer>
             <a href="" class="btn btn-explore">
                 <img id="myImage" src="images/content-btn-welcome.svg" alt="Explore">
+                <img id="myImage" src="images/content-btn-welcome-hover.svg" alt="Explore" class="hidden">
             </a>
         </footer>
     </main>
@@ -36,7 +37,7 @@
                 center: true,
                 loop: true,
                 nav: true,
-                margin: 40,
+                margin: 60,
                 responsive: {
                     0: {
                         items: 1
@@ -45,11 +46,16 @@
                         items: 1
                     },
                     1000: {
-                        items: 1.2
+                        items: 1
                     }
                 }
             })
-        });
+            $('.btn-explore').hover(function () {
+                $('.btn-explore img').toggleClass('hidden');
+            });
+        }
+
+        );
     </script>
 </body>
 
