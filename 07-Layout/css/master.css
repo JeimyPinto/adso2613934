@@ -56,15 +56,16 @@ body {
                 transition: transform 0.4s ease-in;
             }
 
-            a.btn-back:is(:hover) {
-                transform: translateX(-4px);
-            }
-
-            a img {
+            a {
                 width: 80px;
                 height: 80px;
                 padding: 10px;
             }
+
+            a.btn-back:is(:hover) {
+                transform: translateX(-4px);
+            }
+
 
             img {
                 width: 230px;
@@ -82,7 +83,7 @@ body {
                     transition: stroke-dasharray 400ms,
                         stroke-dashoffset 400ms;
                     stroke: var(--color-second);
-                    stroke-width: 4;
+                    stroke-width: 6;
                     stroke-linecap: round;
                 }
 
@@ -138,23 +139,29 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-top: 15rem;
+            margin-top: 12rem;
 
             a:is(:link, :visited) {
                 background: url(../images/btn.png) no-repeat center;
                 color: var(--color-fourth);
                 font-size: 20px;
                 font-weight: 400;
-                height: 80px;
+                height: 120px;
                 display: flex;
                 justify-content: start;
                 align-items: center;
-                gap: 0.6rem;
                 padding-left: 20px;
-                margin-top: 1.2rem;
                 transition: all 0.4s ease-in;
                 text-decoration: none;
                 width: 300px;
+                gap: 1.5rem;
+            }
+
+            span {
+                color: var(--color-second);
+                font-style: var(--ff-body);
+                font-weight: 200;
+                font-size: 30px;
             }
 
             a:is(:hover) {
@@ -164,6 +171,10 @@ body {
 
             a:is(:active) {
                 background: url(../images/btn-active.png) no-repeat center;
+            }
+
+            img {
+                width: 40px;
             }
         }
 
@@ -242,6 +253,12 @@ body {
             }
         }
 
+        section.scroll {
+            scrollbar-width: none;
+            overflow-y: scroll;
+            height: 620px;
+        }
+
         footer {
             display: flex;
             justify-content: center;
@@ -301,10 +318,6 @@ main.welcome {
 
 main.catalogue {
     section.scroll {
-
-        scrollbar-width: none;
-        overflow-y: scroll;
-        height: 620px;
 
         form {
             display: flex;
@@ -501,6 +514,7 @@ main.view-game {
                 display: flex;
                 justify-content: space-between;
                 margin: 0.5rem 0;
+
                 div.column {
                     div.categories-block {
                         display: flex;
@@ -510,10 +524,18 @@ main.view-game {
                             justify-content: center;
                             align-items: center;
                             align-content: center;
-                            height: 30px;
+                            height: 35px;
                             width: 120px;
+                            border: 1px solid var(--color-second);
                             border-radius: 10px;
-                            background-color: var(--color-first);
+                            background: url(../images/btn.png) no-repeat center;
+                            margin-top: 0.5rem;
+                        }
+
+                        p:is(:hover) {
+                            transform: scale(1.1);
+                            background: url(../images/btn-hover.png) no-repeat center;
+                            color: var(--color-second);
                         }
 
                         justify-content: center;
@@ -522,7 +544,8 @@ main.view-game {
                     }
 
                     h4,
-                    p.price, p.year {
+                    p.price,
+                    p.year {
                         font-size: 24px;
                         font-weight: 300;
                         background: linear-gradient(to right, var(--color-second), #1EE8C1);
@@ -536,7 +559,8 @@ main.view-game {
                         border: 1px solid var(--color-second);
                         border-radius: 20px;
                         padding: 20px;
-                        p{
+
+                        p {
                             color: var(--color-second);
                             font-weight: 100;
                         }
@@ -544,8 +568,135 @@ main.view-game {
                 }
             }
         }
-        footer{
+
+        footer {
             height: 30px;
+        }
+    }
+}
+
+/*----------------------------------------*/
+/*-----------0 4 - L O G I N -------------*/
+/*----------------------------------------*/
+main.login,
+main.register {
+    header {
+        justify-content: end;
+
+        img {
+            width: 176px;
+            margin-right: 2rem;
+        }
+
+        svg {
+            margin-right: 1rem;
+        }
+    }
+
+    section.scroll {
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            div.form-group {
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                gap: .6rem;
+                flex-direction: column;
+                width: 312px;
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    color: var(--color-second);
+                    font-family: var(--ff-heading);
+                    gap: .6rem;
+                    font-size: 25px;
+
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                input {
+                    border: none;
+                    outline: none;
+                    background: url("../images/bg-input-form.png") no-repeat center;
+                    font-size: 20px;
+                    font-family: var(--ff-body);
+                    color: var(--color-second);
+                    font-weight: 300;
+                    height: 60px;
+                    text-align: center;
+
+                    &::placeholder {
+                        color: var(--color-second);
+                        opacity: 0.4;
+                        text-align: center;
+                        font-size: 24px;
+                    }
+                }
+
+                img.ico-eye {
+                    position: absolute;
+                    top: 63px;
+                    left: 260px;
+                    cursor: pointer;
+                }
+
+                a {
+                    color: var(--color-second);
+                    align-self: center;
+                }
+
+                button {
+                    margin-top: 1rem;
+                }
+
+                .mask {
+                    mask-repeat: no-repeat;
+                    mask-position: center top;
+                    object-fit: cover;
+                    align-self: center;
+                    height: 186px;
+                    width: 186px;
+                    cursor: pointer;
+                    border-radius: 20px;
+                }
+
+                #upload {
+                    cursor: pointer;
+                }
+
+                #photo {
+                    display: none;
+                }
+            }
+
+            button {
+                background: url("../images/btn-input-form.svg") no-repeat center;
+                cursor: pointer;
+                border: none;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.2s ease-in;
+                width: 312px;
+            }
+
+            button:is(:hover) {
+                background: url("../images/btn-hover.png") no-repeat center;
+            }
+
+            button:is(:active) {
+                background: url("../images/btn-active.png") no-repeat center;
+            }
         }
     }
 }
