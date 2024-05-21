@@ -52,6 +52,19 @@ body {
             z-index: 3;
             position: relative;
 
+            h1 {
+                display: flex;
+                width: 200px;
+                justify-content: center;
+                font-size: 32px;
+                font-weight: 600;
+                background: linear-gradient(to right, var(--color-second), #1EE8C1);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
+
             a.btn-back:is(:link, :visited) {
                 transition: transform 0.4s ease-in;
             }
@@ -482,20 +495,7 @@ main.catalogue {
 /*--------------------------------------------*/
 
 main.view-game {
-    header {
-        h1 {
-            display: flex;
-            width: 200px;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 600;
-            background: linear-gradient(to right, var(--color-second), #1EE8C1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-    }
+    header {}
 
     section {
         display: flex;
@@ -655,7 +655,7 @@ main.register {
                 }
 
                 button {
-                    margin-top: 1rem;
+                    margin-top: 3rem;
                 }
 
                 .mask {
@@ -697,6 +697,117 @@ main.register {
             button:is(:active) {
                 background: url("../images/btn-active.png") no-repeat center;
             }
+        }
+    }
+}
+
+main.login {
+    header {
+        margin-bottom: 6rem;
+    }
+}
+
+/*------------------------------------------------*/
+/*-----------0 6 - D A S H B O A R D -------------*/
+/*------------------------------------------------*/
+
+main.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    section.modules {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        div.module {
+            display: flex;
+            width: 300px;
+            height: 180px;
+            border: 2px solid var(--color-second);
+            border-radius: 0% 25% 0% 25%;
+            background: linear-gradient(to right, var(--color-first), var(--color-third));
+            margin-top: 1rem;
+            position: relative;
+            gap: 0.3rem;
+            justify-content: center;
+            font-size: 24px;
+
+            strong {
+                display: flex;
+                align-self: center;
+                color: var(--color-second);
+            }
+
+            a.btn-more {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 33px;
+                width: 100px;
+                background: var(--color-first);
+                border: 2px solid var(--color-second);
+                border-radius: 10px;
+                transition: all 0.4s ease-in;
+                position: absolute;
+                top: 120;
+                right: 30;
+                text-decoration: none;
+                color: var(--color-second);
+                font-size: 16px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    color: var(--color-second);
+                }
+            }
+
+            a.btn-more:is(:hover) {
+                background: url(../images/bg-input-filter.png) no-repeat center;
+                transform: scale(1.1);
+            }
+
+            span {
+                position: absolute;
+                top: 130;
+                right: 200;
+                color: var(--color-fourth);
+                font-size: 18px;
+                text-shadow: 1px 1px var(--color-second);
+            }
+        }
+    }
+}
+
+/*------------------------------------------*/
+/*-----------0 7 - M O D U L E -------------*/
+/*--------------- U S E R S ----------------*/
+/*------------------------------------------*/
+
+main.module-users {
+
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            background: url("../images/bg-input-form.png") no-repeat center;
+            height: 50px;
+            margin-top: 1.9rem;
+            transition: all 0.4s ease-in;
+            width: 180px;
+            border-radius: 20px;
+            border: 2px solid var(--color-second);
+        }
+
+        button:is(:hover) {
+            background: url("../images/btn-hover.png") no-repeat center;
+            transform: scale(1.1);
+            cursor: pointer;
         }
     }
 }
