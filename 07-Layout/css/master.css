@@ -878,7 +878,6 @@ main.module-games {
 
                 img {
                     margin-left: 0rem;
-                    border: 1px solid var(--color-second);
                     width: 40px;
                     height: 40px;
                     padding: 0.2rem;
@@ -1062,7 +1061,7 @@ main.show-game {
                 }
 
                 img.ico-edit:hover {
-                    box-shadow: 0px 0px 10px 0px var(--color-second);
+                    box-shadow: 0px 0px 20px 0px var(--color-second);
                     border-radius: 30px;
                     transform: scale(1.2);
                 }
