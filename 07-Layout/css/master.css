@@ -56,7 +56,7 @@ body {
                 display: flex;
                 width: 200px;
                 justify-content: center;
-                font-size: 32px;
+                font-size: 40px;
                 font-weight: 600;
                 background: linear-gradient(to right, var(--color-second), #1EE8C1);
                 -webkit-background-clip: text;
@@ -188,6 +188,7 @@ body {
 
             img {
                 width: 40px;
+                height: 40px;
             }
         }
 
@@ -270,6 +271,116 @@ body {
             scrollbar-width: none;
             overflow-y: scroll;
             height: 620px;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+
+                div.form-group {
+                    display: flex;
+                    flex-wrap: wrap;
+                    position: relative;
+                    gap: .8rem;
+                    flex-direction: column;
+                    width: 312px;
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        color: var(--color-second);
+                        font-family: var(--ff-heading);
+                        gap: .6rem;
+                        font-size: 25px;
+
+                        img {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+
+                    input {
+                        background: url("../images/bg-input-form.png") no-repeat center;
+                        border: none;
+                        color: var(--color-second);
+                        font-family: var(--ff-body);
+                        font-size: 20px;
+                        font-weight: 300;
+                        height: 60px;
+                        outline: none;
+                        text-align: center;
+
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-outer-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+
+                        &::placeholder {
+                            color: var(--color-second);
+                            opacity: 0.4;
+                            text-align: center;
+                            font-size: 24px;
+                        }
+                    }
+
+                    img.ico-eye {
+                        position: absolute;
+                        top: 58px;
+                        left: 260px;
+                        cursor: pointer;
+                    }
+
+                    a {
+                        color: var(--color-second);
+                        align-self: center;
+                    }
+
+                    button {
+                        margin-top: 3rem;
+                    }
+
+                    .mask {
+                        mask-repeat: no-repeat;
+                        mask-position: center top;
+                        object-fit: cover;
+                        align-self: center;
+                        height: 186px;
+                        width: 186px;
+                        cursor: pointer;
+                        border-radius: 20px;
+                    }
+
+                    #upload {
+                        cursor: pointer;
+                    }
+
+                    #photo {
+                        display: none;
+                    }
+                }
+
+                button {
+                    background: url("../images/btn-input-form.svg") no-repeat center;
+                    cursor: pointer;
+                    border: none;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: all 0.2s ease-in;
+                    width: 312px;
+                }
+
+                button:is(:hover) {
+                    background: url("../images/btn-hover.png") no-repeat center;
+                }
+
+                button:is(:active) {
+                    background: url("../images/btn-active.png") no-repeat center;
+                }
+            }
         }
 
         footer {
@@ -337,6 +448,7 @@ main.catalogue {
             justify-content: center;
             align-items: center;
             margin-bottom: 2rem;
+            margin-top: 2rem;
 
             input {
                 border: none;
@@ -368,7 +480,8 @@ main.catalogue {
                 align-items: center;
                 justify-items: center;
                 height: 50px;
-                margin-bottom: 2rem;
+                margin-bottom: 1rem;
+                gap: 1rem;
 
                 img {
                     display: flex;
@@ -413,7 +526,7 @@ main.catalogue {
                 gap: 1rem;
                 font-size: 24px;
                 font-weight: 300;
-                background: url("../images/btn.png") no-repeat center;
+                background: url("../images/bg-input-form.png") no-repeat center;
 
                 img {
                     width: 18px;
@@ -495,7 +608,6 @@ main.catalogue {
 /*--------------------------------------------*/
 
 main.view-game {
-    header {}
 
     section {
         display: flex;
@@ -503,6 +615,10 @@ main.view-game {
         justify-content: center;
         flex-direction: column;
         gap: 1rem;
+
+        img {
+            border-radius: 20px;
+        }
 
         article {
             width: 296px;
@@ -592,113 +708,6 @@ main.register {
             margin-right: 1rem;
         }
     }
-
-    section.scroll {
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-
-            div.form-group {
-                display: flex;
-                flex-wrap: wrap;
-                position: relative;
-                gap: .6rem;
-                flex-direction: column;
-                width: 312px;
-
-                label {
-                    display: flex;
-                    align-items: center;
-                    color: var(--color-second);
-                    font-family: var(--ff-heading);
-                    gap: .6rem;
-                    font-size: 25px;
-
-                    img {
-                        width: 40px;
-                        height: 40px;
-                    }
-                }
-
-                input {
-                    border: none;
-                    outline: none;
-                    background: url("../images/bg-input-form.png") no-repeat center;
-                    font-size: 20px;
-                    font-family: var(--ff-body);
-                    color: var(--color-second);
-                    font-weight: 300;
-                    height: 60px;
-                    text-align: center;
-
-                    &::placeholder {
-                        color: var(--color-second);
-                        opacity: 0.4;
-                        text-align: center;
-                        font-size: 24px;
-                    }
-                }
-
-                img.ico-eye {
-                    position: absolute;
-                    top: 63px;
-                    left: 260px;
-                    cursor: pointer;
-                }
-
-                a {
-                    color: var(--color-second);
-                    align-self: center;
-                }
-
-                button {
-                    margin-top: 3rem;
-                }
-
-                .mask {
-                    mask-repeat: no-repeat;
-                    mask-position: center top;
-                    object-fit: cover;
-                    align-self: center;
-                    height: 186px;
-                    width: 186px;
-                    cursor: pointer;
-                    border-radius: 20px;
-                }
-
-                #upload {
-                    cursor: pointer;
-                }
-
-                #photo {
-                    display: none;
-                }
-            }
-
-            button {
-                background: url("../images/btn-input-form.svg") no-repeat center;
-                cursor: pointer;
-                border: none;
-                height: 60px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: all 0.2s ease-in;
-                width: 312px;
-            }
-
-            button:is(:hover) {
-                background: url("../images/btn-hover.png") no-repeat center;
-            }
-
-            button:is(:active) {
-                background: url("../images/btn-active.png") no-repeat center;
-            }
-        }
-    }
 }
 
 main.login {
@@ -716,6 +725,15 @@ main.dashboard {
     flex-direction: column;
     align-items: center;
 
+    header {
+        width: 100%;
+
+        h1 {
+            margin-right: 2rem;
+            margin-left: 2rem;
+        }
+    }
+
     section.modules {
         display: flex;
         justify-content: center;
@@ -724,7 +742,7 @@ main.dashboard {
 
         div.module {
             display: flex;
-            width: 300px;
+            width: 330px;
             height: 180px;
             border: 2px solid var(--color-second);
             border-radius: 0% 25% 0% 25%;
@@ -766,14 +784,13 @@ main.dashboard {
             }
 
             a.btn-more:is(:hover) {
-                background: url(../images/bg-input-filter.png) no-repeat center;
-                transform: scale(1.1);
+                box-shadow: 0px 0px 10px 0px var(--color-second);
             }
 
             span {
                 position: absolute;
                 top: 130;
-                right: 200;
+                right: 220;
                 color: var(--color-fourth);
                 font-size: 18px;
                 text-shadow: 1px 1px var(--color-second);
@@ -783,21 +800,27 @@ main.dashboard {
 }
 
 /*------------------------------------------*/
-/*-----------0 7 - M O D U L E -------------*/
+/*----------- 0 7 - M O D U L E ------------*/
 /*--------------- U S E R S ----------------*/
+/*---------- C A T E G O R I E S -----------*/
 /*------------------------------------------*/
 
-main.module-users {
+main.module-users,
+main.module-categories,
+main.module-games {
 
     section {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        gap: 1rem;
 
         button {
             background: url("../images/bg-input-form.png") no-repeat center;
             height: 50px;
             margin-top: 1.9rem;
+            margin-bottom: 1.9rem;
             transition: all 0.4s ease-in;
             width: 180px;
             border-radius: 20px;
@@ -809,5 +832,336 @@ main.module-users {
             transform: scale(1.1);
             cursor: pointer;
         }
+
+        article {
+            align-items: center;
+            background: linear-gradient(to left, var(--color-third), var(--color-first));
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            height: 100px;
+            justify-content: space-between;
+            width: 350px;
+
+            img {
+                width: 86px;
+                height: 86px;
+                margin-left: 0.5rem;
+            }
+
+            img#details {
+                border-radius: 50% 0% 0% 50%;
+            }
+
+            img#delete {
+                border-radius: 0% 50% 50% 0%;
+            }
+
+            div.info-user {
+                width: 100px;
+                color: var(--color-second);
+                font-weight: 200;
+
+                strong {
+                    display: inline-block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+
+            div.btn-crud {
+                display: flex;
+                align-self: end;
+                padding-bottom: 1rem;
+                margin-right: 1rem;
+
+                img {
+                    margin-left: 0rem;
+                    border: 1px solid var(--color-second);
+                    width: 40px;
+                    height: 40px;
+                    padding: 0.2rem;
+                }
+            }
+        }
+    }
+
+    footer {
+        margin-top: 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+
+        span {
+            font-size: 18px;
+            color: var(--color-second);
+        }
     }
 }
+
+
+/*--------------------------------------------*/
+/*---------- 0 8 - P R O F I L E -------------*/
+/*-----------------A D M I N------------------*/
+main.profile {
+
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #1EE8C1;
+        gap: 0.5rem;
+
+        .profile-photo {
+            width: 150px;
+        }
+
+        strong {
+            text-decoration: underline;
+            font-size: 20px;
+        }
+
+        strong:is(:hover) {
+            color: var(--color-second);
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            div.block-info {
+                font-size: 24px;
+                width: 200px;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    }
+}
+
+/*------------------------------------------------*/
+/*-------------- 0 9 - S H O W -------------------*/
+/*----------------- U S E R ----------------------*/
+/*-------------- C A T E G O R I E ---------------*/
+
+main.show-user,
+main.show-categorie,
+main.show-game {
+    header {
+        h1 {
+            text-align: center;
+            font-size: 36px;
+        }
+    }
+
+    section.scroll {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            height: 620px;
+            margin-top: 4rem;
+
+            #emoji-categorie {
+                font-size: 60px;
+            }
+
+            div.form-group {
+                display: flex;
+                align-items: center;
+
+                textarea#description {
+                    width: 340px;
+                    height: 219px;
+                    border: none;
+                    background: url(../images/bg-text-area.png) no-repeat center;
+                    padding: 1.5rem;
+                    margin-top: 1rem;
+                    color: var(--color-second);
+                    font-weight: 300;
+                }
+
+                textarea#description::placeholder {
+                    color: var(--color-second);
+                    opacity: 0.5;
+                    text-align: center;
+                }
+
+                #category {
+                    display: flex;
+                    justify-self: center;
+                    width: 340px;
+                    height: 60px;
+                    background: url(../images/bg-input-form.png) no-repeat center;
+                    padding: 1rem;
+                    font-size: 16px;
+                    color: var(--color-second);
+                    border: none;
+
+                    option {
+                        color: var(--color-second);
+                        background: var(--color-first);
+                    }
+                }
+
+                span {
+                    color: var(--color-second);
+                }
+
+                input {
+                    width: 340px;
+                    border-radius: 20px;
+                }
+
+                .profile-picture {
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .custom-file-upload {
+                    border: 1px solid var(--color-second);
+                    display: inline-block;
+                    padding: 6px 12px;
+                    cursor: pointer;
+                    background-color: var(--color-first);
+                    color: var(--color-second);
+                    font-size: 16px;
+                    border-radius: 5px;
+                    text-align: center;
+                }
+
+                .custom-file-upload:hover {
+                    box-shadow: 0px 0px 10px 0px var(--color-second);
+                }
+
+                input::placeholder {
+                    text-align: start;
+                    padding-left: 50px;
+                    font-size: 18px;
+                    opacity: 1;
+                    overflow: ellipsis;
+                }
+
+                img.ico-edit {
+                    position: absolute;
+                    top: 60px;
+                    left: 280px;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in;
+                }
+
+                img.ico-edit:hover {
+                    box-shadow: 0px 0px 10px 0px var(--color-second);
+                    border-radius: 30px;
+                    transform: scale(1.2);
+                }
+
+            }
+        }
+    }
+}
+
+/*--------------------------------------*/
+/*---------- 1 0 - A D D----------------*/
+/*----------- U S E R ------------------*/
+/*----------- G A M E ------------------*/
+/*-------C A T E G O R I E -------------*/
+
+
+main.add-user,
+main.add-categorie,
+main.add-game {
+    header {
+        margin-bottom: 0.5rem;
+
+        h1 {
+            text-align: center;
+        }
+    }
+
+    section {
+        .profile-picture {
+            opacity: 0.5;
+        }
+
+        form {
+            div.form-group {
+                .emoji-table {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    justify-content: center;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .emoji-cell {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                .emoji-cell:hover {
+                    background-color: #f0f0f0;
+                }
+
+                .emoji-cell.selected {
+                    background-color: #d0f0d0;
+                    border-color: #0d0;
+                }
+
+                textarea#description {
+                    width: 300px;
+                    height: 219px;
+                    border-radius: 20px;
+                    background: url(../images/bg-text-area.png) no-repeat center;
+                    padding: 1rem;
+                }
+
+                textarea#description::placeholder {
+                    color: var(--color-second);
+                    opacity: 0.5;
+                    text-align: center;
+                }
+
+                #category {
+                    width: 300px;
+                    height: 60px;
+                    background: url(../images/bg-input-form.png) no-repeat center;
+                    padding: 1rem;
+                    font-size: 16px;
+                    color: var(--color-second);
+                    border: none;
+
+                    option {
+                        color: var(--color-second);
+                        background: var(--color-first);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*--------------------------------------*/
+/*---------- 1 1 - S H O W -------------*/
+/*----------- G A M E ------------------*/

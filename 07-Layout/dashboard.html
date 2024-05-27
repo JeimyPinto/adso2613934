@@ -12,7 +12,7 @@
 <body>
     <main class="dashboard">
         <header>
-            <img src="images/logo-dashboard.svg" alt="logo" class="logo-top">
+            <h1>Dashboard</h1>
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path class="line top"
                     d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
@@ -24,17 +24,17 @@
         <!-- ESTO ES EL MENÚ DEL MENÚ HAMBURGUESA -->
         <nav class="nav">
             <menu>
-                <a href="login.html">
-                    <img src="images/ico-login.svg" alt="Login">
-                    <span>Login</span>
-                </a>
-                <a href="register.html">
-                    <img src="images/ico-register.svg" alt="Register">
-                    <span>Register</span>
+                <a href="profile-admin.html">
+                    <img src="images/ico-users-module.svg" alt="Catalogue">
+                    <span>Profile</span>
                 </a>
                 <a href="catalogue.html">
                     <img src="images/ico-catalogue.svg" alt="Catalogue">
                     <span>Catalogue</span>
+                </a>
+                <a href="login.html">
+                    <img src="images/ico-login.svg" alt="Login">
+                    <span>Log out</span>
                 </a>
             </menu>
         </nav>
@@ -52,14 +52,14 @@
                 <img src="images/ico-categories-module.svg" alt="">
                 <strong>Module</strong>
                 <img src="images/content-btn-categories-module.svg" alt="">
-                <a href="" class="btn-more">view </a>
+                <a href="module-categories.html" class="btn-more">view </a>
                 <span>120 rows</span>
             </div>
             <div class="module">
                 <img src="images/ico-games-module.svg" alt="">
                 <strong>Module</strong>
                 <img src="images/content-btn-games-module.svg" alt="">
-                <a href="" class="btn-more">view </a>
+                <a href="module.games.html" class="btn-more">view </a>
                 <span>20 rows</span>
             </div>
         </section>
@@ -70,17 +70,6 @@
     <script src="js/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 0,
-                nav: true,
-                dots: false,
-                responsive: {
-                    0: {
-                        items: 2
-                    }
-                }
-            })
             $('header').on('click', '.btn-burger', function () {
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')

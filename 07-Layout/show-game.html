@@ -1,0 +1,135 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameApp - Show Game</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body>
+    <main class="show-game">
+        <header>
+            <a href="module.games.html" class="btn-back">
+                <img src="images/btn-back.svg" alt="Back">
+            </a>
+            <h1>Show Game</h1>
+            <svg class="btn-burger" viewBox="0 0 100 100" width="80">
+                <path class="line top"
+                    d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                <path class="line middle" d="m 70,50 h -40" />
+                <path class="line bottom"
+                    d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+            </svg>
+        </header>
+        <!-- ESTO ES EL MENÚ DEL MENÚ HAMBURGUESA -->
+        <nav class="nav">
+            <menu>
+                <a href="profile.html">
+                    <img src="images/ico-users-module.svg" alt="Catalogue">
+                    <span>Profile</span>
+                </a>
+                <a href="dashboard.html">
+                    <img src="images/ico-dashboard.svg" alt="Catalogue">
+                    <span>Dashboard</span>
+                </a>
+                <a href="login.html">
+                    <img src="images/ico-login.svg" alt="Login">
+                    <span>Log out</span>
+                </a>
+            </menu>
+        </nav>
+        <section class="scroll">
+            <form action="" method="get">
+                <!-- Label del id -->
+                <div class="form-group">
+                    <img class="profile-picture" src="images/game01.png" alt="">
+                    <label for="file-upload" class="custom-file-upload"> Subir imagen
+                    </label>
+                    <input id="file-upload" type="file" accept="image/*" style="display: none;">
+                </div>
+                <div class="form-group">
+                    <label for="game-name">
+                        <img src="images/ico-name.svg" alt="">
+                        Game Name
+                    </label>
+                    <input type="text" name="game-name" id="game-name" placeholder="Super Animal Royale" maxlength="12"
+                        disabled>
+                    <img src="images/ico-edit.svg" alt="" class="ico-edit">
+                    </input>
+                </div>
+                <div class="form-group">
+                    <label for="category">
+                        <img src="images/ico-category.svg" alt="">
+                        Category
+                    </label>
+                    <select name="category" id="category">
+                        <option value="option2">Battle Royale</option>
+                        <option value="option0">Select a category</option>
+                        <option value="option1">Aventure</option>
+                        <option value="option3">Puzzle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="year">
+                        <img src="images/ico-year.svg" alt="">
+                        Year
+                    </label>
+                    <input type="number" name="year" id="year" placeholder="2020" maxlength="4" disabled>
+                    </input>
+                    <img src="images/ico-edit.svg" alt="" class="ico-edit">
+                </div>
+                <div class="form-group">
+                    <label for="description">
+                        <img src="images/ico-description.svg" alt="">
+                        Description
+                    </label>
+                    <textarea name="description" id="description" placeholder="" maxlength="255"
+                        disabled>Game description</textarea>
+                    <img src="images/ico-edit.svg" alt="" class="ico-edit">
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('header').on('click', '.btn-burger', function () {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
+            //-------------------------------------------
+            $togglePass = false;
+            $('section').on('click', '.ico-eye', function () {
+                !$togglePass ? $(this).next().attr('type', 'text')
+                    : $(this).next().attr('type', 'password')
+
+                !$togglePass ? $(this).attr('src', 'images/ico-eye-close.svg')
+                    : $(this).attr('src', 'images/ico-eye.svg')
+                $togglePass = !$togglePass
+            })
+            $('#file-upload').on('change', function () {
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('.profile-picture').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+            $('.ico-edit').on('click', function () {
+                var inputField = $(this).prev('input');
+                inputField.prop('disabled', false);
+                inputField.attr('placeholder', '');
+                inputField.focus();
+            });
+        })
+    </script>
+
+</body>
+
+</html>
