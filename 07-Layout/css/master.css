@@ -997,15 +997,15 @@ main.show-game {
                 }
 
                 #category {
-                    display: flex;
-                    justify-self: center;
-                    width: 340px;
-                    height: 60px;
                     background: url(../images/bg-input-form.png) no-repeat center;
-                    padding: 1rem;
-                    font-size: 16px;
-                    color: var(--color-second);
                     border: none;
+                    color: var(--color-second);
+                    display: flex;
+                    font-size: 16px;
+                    height: 60px;
+                    justify-self: center;
+                    padding: 1rem;
+                    width: 340px;
 
                     option {
                         color: var(--color-second);
@@ -1023,21 +1023,21 @@ main.show-game {
                 }
 
                 .profile-picture {
-                    width: 150px;
-                    height: 150px;
                     border-radius: 50%;
+                    height: 150px;
                     object-fit: cover;
+                    width: 150px;
                 }
 
                 .custom-file-upload {
-                    border: 1px solid var(--color-second);
-                    display: inline-block;
-                    padding: 6px 12px;
-                    cursor: pointer;
                     background-color: var(--color-first);
-                    color: var(--color-second);
-                    font-size: 16px;
+                    border: 1px solid var(--color-second);
                     border-radius: 5px;
+                    color: var(--color-second);
+                    cursor: pointer;
+                    display: inline-block;
+                    font-size: 16px;
+                    padding: 6px 12px;
                     text-align: center;
                 }
 
@@ -1046,18 +1046,18 @@ main.show-game {
                 }
 
                 input::placeholder {
-                    text-align: start;
-                    padding-left: 50px;
                     font-size: 18px;
                     opacity: 1;
                     overflow: ellipsis;
+                    padding-left: 50px;
+                    text-align: start;
                 }
 
                 img.ico-edit {
+                    cursor: pointer;
+                    left: 280px;
                     position: absolute;
                     top: 60px;
-                    left: 280px;
-                    cursor: pointer;
                     transition: all 0.2s ease-in;
                 }
 
@@ -1098,26 +1098,26 @@ main.add-game {
         form {
             div.form-group {
                 .emoji-table {
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
                     display: flex;
                     flex-wrap: wrap;
                     gap: 10px;
                     justify-content: center;
                     padding: 20px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
                 }
 
                 .emoji-cell {
-                    width: 40px;
-                    height: 40px;
-                    font-size: 24px;
-                    display: flex;
-                    justify-content: center;
                     align-items: center;
                     border: 1px solid #ccc;
                     border-radius: 5px;
                     cursor: pointer;
+                    display: flex;
+                    font-size: 24px;
+                    height: 40px;
+                    justify-content: center;
                     transition: background-color 0.3s ease;
+                    width: 40px;
                 }
 
                 .emoji-cell:hover {
@@ -1130,11 +1130,11 @@ main.add-game {
                 }
 
                 textarea#description {
-                    width: 300px;
-                    height: 219px;
-                    border-radius: 20px;
                     background: url(../images/bg-text-area.png) no-repeat center;
+                    border-radius: 20px;
+                    height: 219px;
                     padding: 1rem;
+                    width: 300px;
                 }
 
                 textarea#description::placeholder {
@@ -1144,13 +1144,13 @@ main.add-game {
                 }
 
                 #category {
-                    width: 300px;
-                    height: 60px;
                     background: url(../images/bg-input-form.png) no-repeat center;
-                    padding: 1rem;
-                    font-size: 16px;
-                    color: var(--color-second);
                     border: none;
+                    color: var(--color-second);
+                    font-size: 16px;
+                    height: 60px;
+                    padding: 1rem;
+                    width: 300px;
 
                     option {
                         color: var(--color-second);
@@ -1161,7 +1161,3 @@ main.add-game {
         }
     }
 }
-
-/*--------------------------------------*/
-/*---------- 1 1 - S H O W -------------*/
-/*----------- G A M E ------------------*/
