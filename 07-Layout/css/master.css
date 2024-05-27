@@ -20,6 +20,7 @@ body:after {
     z-index: -1;
     overflow: hidden;
     content: url(../images/btn-active.png) url(../images/btn-hover.png);
+
 }
 
 /*---------------------------------------*/
