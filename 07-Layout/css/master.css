@@ -384,6 +384,10 @@ body {
             }
         }
 
+        section::-webkit-scrollbar {
+            display: none;
+        }
+
         footer {
             display: flex;
             justify-content: center;
@@ -918,33 +922,34 @@ main.profile {
             width: 150px;
         }
 
-        strong {
-            text-decoration: underline;
-            font-size: 20px;
-        }
-
-        strong:is(:hover) {
-            color: var(--color-second);
-            cursor: pointer;
-            transform: scale(1.1);
-        }
-
         article {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            margin-top: 4rem;
 
-            div.block-info {
-                font-size: 24px;
-                width: 200px;
-                display: flex;
-                justify-content: start;
-                align-items: center;
-                gap: 1rem;
+            p {
+                color: var(--color-second);
+                font-size: 18px;
+
+                strong {
+                    font-size: 20px;
+                    color: #1EE8C1;
+                    font-size: 24px;
+                }
+
+                strong:is(:hover) {
+                    color: var(--color-second);
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
             }
+
         }
     }
+
 }
+
 
 /*------------------------------------------------*/
 /*-------------- 0 9 - S H O W -------------------*/
