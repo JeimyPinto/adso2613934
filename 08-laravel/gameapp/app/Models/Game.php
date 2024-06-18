@@ -25,4 +25,28 @@ class Game extends Model
         'slider',
         'description',
     ];
+
+    /**
+     * Relationship : Game belongs to user
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Relationship : Game belongs to category
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    /**
+     * Relationship : Game belongs to collection
+     */
+    public function collections()
+    {
+        return $this->belongsTo('App\Models\Collection');
+    }
 }
