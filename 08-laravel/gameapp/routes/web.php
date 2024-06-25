@@ -1,11 +1,18 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
-    return view('hola amigos');
+    return view('welcome');
 });
+Route::get('/catalogue', function () {
+    return view('catalogue');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/games/list', function () {
     $games = App\Models\Game::all();
@@ -35,3 +42,10 @@ Route::get('users/take:20', function () {
             '</table>';
     }
 });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';
