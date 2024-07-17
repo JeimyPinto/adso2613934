@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -9,10 +11,6 @@ Route::get('/', function () {
 Route::get('/catalogue', function () {
     return view('catalogue');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/games/list', function () {
     $games = App\Models\Game::all();
@@ -29,23 +27,18 @@ Route::get('/games/', function () {
     return view('listgames')->with('games', $games);
 });
 
-Route::get('users/take:20', function () {
-    $user = App\Models\User::take(20)->get();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-    foreach ($user as $u) {
-        echo '<table border="1">'
-            . '<tr>'
-            . '<td>' . $u->fullname .  '</td>'
-            . '<td>' . Carbon\Carbon::parse($u->birthdate)->age . ' years old' . '</td>'
-            . '<td>' . $u->created_at->diffForHumans() . '</td>'
-            . '</tr>' .
-            '</table>';
-    }
-});
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resources([
+        'users' => UserController::class,
+
+    ]);
 });
 
 require __DIR__ . '/auth.php';

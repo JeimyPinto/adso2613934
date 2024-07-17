@@ -4,10 +4,10 @@
 :root {
     --ff-heading: "Junge", cursive;
     --ff-body: "Junge", cursive;
-    --color-first: #43766C;
-    --color-second: #F8FAE5;
-    --color-third: #5E5E5E;
-    --color-fourth: #76453B;
+    --color-first: #43766c;
+    --color-second: #f8fae5;
+    --color-third: #5e5e5e;
+    --color-fourth: #76453b;
 }
 
 /*---------------------------------------*/
@@ -20,7 +20,6 @@ body:after {
     z-index: -1;
     overflow: hidden;
     content: url(../images/btn-active.png) url(../images/btn-hover.png);
-
 }
 
 /*---------------------------------------*/
@@ -59,7 +58,11 @@ body {
                 justify-content: center;
                 font-size: 40px;
                 font-weight: 600;
-                background: linear-gradient(to right, var(--color-second), #1EE8C1);
+                background: linear-gradient(
+                    to right,
+                    var(--color-second),
+                    #1ee8c1
+                );
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
@@ -80,7 +83,6 @@ body {
                 transform: translateX(-4px);
             }
 
-
             img {
                 width: 230px;
                 padding: 5px;
@@ -94,8 +96,7 @@ body {
 
                 .line {
                     fill: none;
-                    transition: stroke-dasharray 400ms,
-                        stroke-dashoffset 400ms;
+                    transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
                     stroke: var(--color-second);
                     stroke-width: 6;
                     stroke-linecap: round;
@@ -283,7 +284,7 @@ body {
                     display: flex;
                     flex-wrap: wrap;
                     position: relative;
-                    gap: .8rem;
+                    gap: 0.8rem;
                     flex-direction: column;
                     width: 312px;
 
@@ -292,7 +293,7 @@ body {
                         align-items: center;
                         color: var(--color-second);
                         font-family: var(--ff-heading);
-                        gap: .6rem;
+                        gap: 0.6rem;
                         font-size: 25px;
 
                         img {
@@ -302,7 +303,8 @@ body {
                     }
 
                     input {
-                        background: url("../images/bg-input-form.png") no-repeat center;
+                        background: url("../images/bg-input-form.png") no-repeat
+                            center;
                         border: none;
                         color: var(--color-second);
                         font-family: var(--ff-body);
@@ -363,7 +365,8 @@ body {
                 }
 
                 button {
-                    background: url("../images/btn-input-form.svg") no-repeat center;
+                    background: url("../images/btn-input-form.svg") no-repeat
+                        center;
                     cursor: pointer;
                     border: none;
                     height: 60px;
@@ -405,7 +408,7 @@ body {
             }
 
             a:is(:hover) {
-                background: url("../images/btn-hover.png")no-repeat center;
+                background: url("../images/btn-hover.png") no-repeat center;
                 transform: scale(1.1);
             }
 
@@ -422,7 +425,6 @@ body {
     }
 }
 
-
 /*----------------------------------------*/
 /*----------0 1 - W E L C O M E-----------*/
 /*----------------------------------------*/
@@ -431,8 +433,6 @@ main.welcome {
     header {
         margin-top: 3.2rem;
     }
-
-
 }
 
 /*--------------------------------------------*/
@@ -447,7 +447,6 @@ main.welcome {
 
 main.catalogue {
     section.scroll {
-
         form {
             display: flex;
             justify-content: center;
@@ -500,7 +499,6 @@ main.catalogue {
                 }
             }
 
-
             figure {
                 display: flex;
                 flex-direction: column;
@@ -539,7 +537,7 @@ main.catalogue {
             }
 
             a:is(:hover) {
-                background: url("../images/btn-hover.png")no-repeat center;
+                background: url("../images/btn-hover.png") no-repeat center;
             }
 
             a:is(:active) {
@@ -605,7 +603,6 @@ main.catalogue {
             }
         }
     }
-
 }
 
 /*--------------------------------------------*/
@@ -613,7 +610,6 @@ main.catalogue {
 /*--------------------------------------------*/
 
 main.view-game {
-
     section {
         display: flex;
         align-items: center;
@@ -655,13 +651,13 @@ main.view-game {
 
                         p:is(:hover) {
                             transform: scale(1.1);
-                            background: url(../images/btn-hover.png) no-repeat center;
+                            background: url(../images/btn-hover.png) no-repeat
+                                center;
                             color: var(--color-second);
                         }
 
                         justify-content: center;
                         gap: 1rem;
-
                     }
 
                     h4,
@@ -669,7 +665,11 @@ main.view-game {
                     p.year {
                         font-size: 24px;
                         font-weight: 300;
-                        background: linear-gradient(to right, var(--color-second), #1EE8C1);
+                        background: linear-gradient(
+                            to right,
+                            var(--color-second),
+                            #1ee8c1
+                        );
                         -webkit-background-clip: text;
                         background-clip: text;
                         -webkit-text-fill-color: transparent;
@@ -751,7 +751,11 @@ main.dashboard {
             height: 180px;
             border: 2px solid var(--color-second);
             border-radius: 0% 25% 0% 25%;
-            background: linear-gradient(to right, var(--color-first), var(--color-third));
+            background: linear-gradient(
+                to right,
+                var(--color-first),
+                var(--color-third)
+            );
             margin-top: 1rem;
             position: relative;
             gap: 0.3rem;
@@ -813,7 +817,6 @@ main.dashboard {
 main.module-users,
 main.module-categories,
 main.module-games {
-
     section {
         display: flex;
         justify-content: center;
@@ -840,7 +843,11 @@ main.module-games {
 
         article {
             align-items: center;
-            background: linear-gradient(to left, var(--color-third), var(--color-first));
+            background: linear-gradient(
+                to left,
+                var(--color-third),
+                var(--color-first)
+            );
             border-radius: 20px;
             cursor: pointer;
             display: flex;
@@ -896,7 +903,9 @@ main.module-games {
         display: flex;
         justify-content: space-between;
         padding: 1rem;
-
+        img {
+            width: 10px;
+        }
         span {
             font-size: 18px;
             color: var(--color-second);
@@ -904,18 +913,16 @@ main.module-games {
     }
 }
 
-
 /*--------------------------------------------*/
 /*---------- 0 8 - P R O F I L E -------------*/
 /*-----------------A D M I N------------------*/
 main.profile {
-
     section {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        color: #1EE8C1;
+        color: #1ee8c1;
         gap: 0.5rem;
 
         .profile-photo {
@@ -934,7 +941,7 @@ main.profile {
 
                 strong {
                     font-size: 20px;
-                    color: #1EE8C1;
+                    color: #1ee8c1;
                     font-size: 24px;
                 }
 
@@ -944,12 +951,9 @@ main.profile {
                     transform: scale(1.1);
                 }
             }
-
         }
     }
-
 }
-
 
 /*------------------------------------------------*/
 /*-------------- 0 9 - S H O W -------------------*/
@@ -1002,7 +1006,8 @@ main.show-game {
                 }
 
                 #category {
-                    background: url(../images/bg-input-form.png) no-repeat center;
+                    background: url(../images/bg-input-form.png) no-repeat
+                        center;
                     border: none;
                     color: var(--color-second);
                     display: flex;
@@ -1071,7 +1076,6 @@ main.show-game {
                     border-radius: 30px;
                     transform: scale(1.2);
                 }
-
             }
         }
     }
@@ -1082,7 +1086,6 @@ main.show-game {
 /*----------- U S E R ------------------*/
 /*----------- G A M E ------------------*/
 /*-------C A T E G O R I E -------------*/
-
 
 main.add-user,
 main.add-categorie,
@@ -1149,7 +1152,8 @@ main.add-game {
                 }
 
                 #category {
-                    background: url(../images/bg-input-form.png) no-repeat center;
+                    background: url(../images/bg-input-form.png) no-repeat
+                        center;
                     border: none;
                     color: var(--color-second);
                     font-size: 16px;
