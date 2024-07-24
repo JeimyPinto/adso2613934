@@ -28,16 +28,20 @@ Route::get('/games/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = User::where('id', auth()->id())->first();
+    return view('dashboard')->with('user', $user);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/show', function () {
+        $userLogged = User::where('id', auth()->id())->first();
+        return view('profile')->with('user', $userLogged);
+    });
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resources([
         'users' => UserController::class,
-
     ]);
 });
 

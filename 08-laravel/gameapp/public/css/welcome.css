@@ -1,0 +1,59 @@
+@import "master.css";
+/*----------------------------------------*/
+/*----------0 1 - W E L C O M E-----------*/
+/*----------------------------------------*/
+
+.welcome {
+    header {
+        margin-top: 3.2rem;
+    }
+}
+.owl-nav {
+    position: relative;
+    top: -180px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0rem;
+}
+.owl-prev {
+    background: url(../images/btn-prev.svg) no-repeat center !important;
+}
+.owl-prev:is(:hover) {
+    transform: scale(1.1) translateX(-2px);
+}
+.owl-next {
+    background: url(../images/btn-next.svg) no-repeat center !important;
+}
+.owl-next:hover {
+    transform: scale(1.1) translateX(2px);
+}
+.owl-prev,
+.owl-next {
+    transition: transform 0.1s ease-in;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    width: 50px;
+    text-indent: -9999px;
+}
+.owl-carousel {
+    margin-top: 6.8rem;
+}
+.owl-dots {
+    position: relative;
+    top: -20px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.owl-dot {
+    height: 15px;
+    width: 15px;
+    background-color: var(--color-second) !important;
+    border-radius: 50%;
+}
+.owl-dot.active,
+.owl-dot:is(:hover) {
+    box-shadow: 2px 2px 5px var(--color-second);
+    transform: scale(1.2);
+}

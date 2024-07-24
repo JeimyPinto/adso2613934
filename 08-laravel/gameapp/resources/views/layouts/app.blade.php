@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <main class="@yield('class')">
+    <main class="container @yield('class')">
         @yield('content')
     </main>
     <script src={{ asset('js/jquery-3.7.1.min.js') }}></script>

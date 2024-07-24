@@ -25,7 +25,7 @@
         </a>
         @foreach ($users as $user)
             <article>
-                <img src="images/profile1.png" alt="">
+                <img src={{asset('images/profile/'. $user->photo)}} alt="">
                 <div class="info-user">
                     <span>{{ $user->fullname }}</span>
                     <strong>{{ $user->role }}</strong>

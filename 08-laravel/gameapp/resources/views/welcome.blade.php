@@ -1,18 +1,25 @@
 @extends('layouts.app')
+
+<head>
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+</head>
 @section('title', 'GameApp - Welcome')
 @section('class', 'welcome')
 @section('content')
-    <header>
-        <img src={{ asset('images/logo-welcome.svg') }} alt="">
+    <header class="header">
+        <h1 class="title">
+            GameApp
+        </h1>
     </header>
     <section class="slider owl-carousel">
         <img src={{ asset('images/slide01.png') }} alt="Logo de la Aplicación" class="item">
         <img src={{ asset('images/slide02.png') }} alt="Logo de la Aplicación" class="item">
         <img src={{ asset('images/slide01.png') }} alt="Logo de la Aplicación" class="item">
     </section>
-    <footer>
-        <a href={{ url('catalogue') }} class="btn btn-explore">
-            <img id="myImage" src={{ asset('images/content-btn-welcome.svg') }} alt="Explore">
+    <footer class="footer">
+        <a href={{ url('catalogue') }} class="btn">
+            <span>Enter</span>
+            <div class="dot"></div>
         </a>
     </footer>
 @endsection

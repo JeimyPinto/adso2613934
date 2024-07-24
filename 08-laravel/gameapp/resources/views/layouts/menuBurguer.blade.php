@@ -21,16 +21,16 @@
 @auth
     <nav class="nav">
         <menu>
-            <a href="profile-admin.html">
-                <img src="images/ico-users-module.svg" alt="Catalogue">
+            <a href={{url('/profile/show')}}>
+                <img src={{asset("images/ico-users-module.svg")}} alt="Catalogue">
                 <span>Profile</span>
             </a>
-            <a href="catalogue.html">
-                <img src="images/ico-catalogue.svg" alt="Catalogue">
-                <span>Catalogue</span>
+            <a href={{url('/dashboard')}}>
+                <img src={{asset("images/ico-catalogue.svg")}} alt="Catalogue">
+                <span>Dashboard</span>
             </a>
             <a href="javascript:;" onclick="logit.submit();">
-                <img src="images/ico-login.svg" alt="" class="logout">
+                <img src={{asset("images/ico-login.svg")}} alt="" class="logout">
                 <span>Logout</span>
             </a>
             </footer>

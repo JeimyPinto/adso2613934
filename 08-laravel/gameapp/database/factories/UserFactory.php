@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         $gender = fake()->randomElement($array = array('Female', 'Male'));
         $fullname = ($gender === 'Female') ? fake()->firstNameFemale() : fake()->firstNameMale();
-        $photo = fake()->image(public_path('images'), 140, 140, null, false);
+        $photo = fake()->image(public_path('images/profile'), 140, 140, null, false);
         return [
             'fullname' => $fullname . ' ' . fake()->lastName(),
             'document' => fake()->isbn13(),

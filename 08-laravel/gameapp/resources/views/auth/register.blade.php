@@ -13,9 +13,15 @@
     </header>
     @include('layouts.menuBurguer')
     <section class="scroll">
-        <!-- RESTO DEL CONTENIDO -->
-        <form action="login.html" method="get">
-            <!-- Label del id -->
+        <form action={{ route('register') }} method="POST" enctype="multipart/form-data">
+            @csrf
+            @if (count($errors) > 0)
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            @endif
             <div class="form-group">
                 <img id="upload" class="mask" src="images/bg-upload-photo.svg" alt="Photo">
                 <input id="photo" type="file" name="photo" accept="image/*">
@@ -23,25 +29,47 @@
             <div class="form-group">
                 <label for="">
                     <img src="images/ico-full-name.svg" alt="">
-                    User Name
+                    FullName </label>
+                <input type="text" name="fullname" placeholder="fullname" maxlength="15">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    <img src="images/ico-full-name.svg" alt="">
+                    Document </label>
+                <input type="text" name="document" placeholder="123456789" maxlength="15">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    <img src="images/ico-full-name.svg" alt="">
+                    Gender
                 </label>
-                <input type="id" name="id" placeholder="123456789" maxlength="12">
+                <select name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">
+                    <img src="images/ico-calendar.svg" alt="">
+                    Birthday
+                </label>
+                <input type="date" name="birthdate">
             </div>
             <div class="form-group">
                 <label for="">
                     <img src="images/ico-mail.svg" alt="">
                     Email
                 </label>
-                <input type="id" name="id" placeholder="example@mail.com" maxlength="12">
+                <input type="id" name="email" placeholder="example@mail.com">
             </div>
             <div class="form-group">
                 <label for="">
                     <img src="images/ico-phone.svg" alt="">
                     Cellphone
                 </label>
-                <input type="number" name="id" placeholder="123456789" maxlength="12">
+                <input type="number" name="phone" placeholder="123456789" maxlength="12">
             </div>
-            <!-- Label de la contraseña -->
             <div class="form-group">
                 <label for="">
                     <img src="images/ico-password.svg" alt="">
@@ -51,10 +79,18 @@
                 <input type="password" name="password" placeholder="∗∗∗∗∗∗∗∗∗∗">
             </div>
             <div class="form-group">
+                <label for="">
+                    <img src="images/ico-password.svg" alt="">
+                    Password Confirmed
+                </label>
+                <img class="ico-eye" src="images/ico-eye.svg" alt="Eyes">
+                <input type="password" name="password_confirmation" placeholder="∗∗∗∗∗∗∗∗∗∗">
+            </div>
+            <div class="form-group">
                 <button type="submit">
                     <img src="images/content-btn-register.svg" alt="">
                 </button>
-                <a href="">Do you have account?</a>
+                <a href="">Do you have a count?</a>
             </div>
         </form>
     </section>
@@ -91,4 +127,3 @@
         })
     </script>
 @endsection
-

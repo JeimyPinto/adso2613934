@@ -15,7 +15,6 @@
     @include('layouts.menuBurguer')
 
     <section class="scroll">
-        <!-- RESTO DEL CONTENIDO -->
         <form action="{{ route('login') }}" method="POST">
             @csrf
             @if (count($errors->all()) > 0)
