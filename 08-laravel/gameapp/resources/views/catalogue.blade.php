@@ -25,55 +25,28 @@
         <form action="" method="POST" id="form-filter">
             <input type="text" placeholder="Filter" id="form-filter-input">
         </form>
-        <article class="categorie-article">
-            <div class="categorie-title">
-                <img src={{asset("images/slide01.png")}} alt="" id="categorie-articule-title-image">
-                <h2> Aventura </h2>
-            </div>
-            <section class="owl-carousel">
-                <figure>
-                    <img src="images/slide-c1-01.png" alt="" class="slide">
-                    <figcaption>Surfer Cat</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c1-05.png" alt="" class="slide">
-                    <figcaption>Minecraft</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c1-03.png" alt="" class="slide">
-                    <figcaption>Stardew Valley </figcaption>
-                    <a href="view.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
-                    </a>
-                </figure>
+        @foreach ($categories as $category)
+            <section class="categorie-section">
+                <div class="categorie-section-title">
+                    <img src="{{ asset('images/slide01.png') }}" alt="categorie-image" id="categorie-section-title-image">
+                    <h2>{{ $category->name }}</h2>
+                </div>
+                <div class="categorie-section-dots">
+                    <img src="{{ asset('images/btn-prev.svg') }}" alt="Btn-prev" id="categorie-section-dot-prev">
+                    <img src="{{ asset('images/btn-next.svg') }}" alt="Btn-next" id="categorie-section-dot-next">
+                </div>
+                @foreach ($games as $game)
+                    @if ($game->category_id == $category->id)
+                        <div class="game-section">
+                            <figure class="game-section-block1">
+                                <img src="{{ asset('/images/games/' . $game->image) }}" alt="" class="game-section-img">
+                                <figcaption class="game-section-tittle">{{ $game->title }}</figcaption>
+                            </figure>
+                            <article class="game-section-block2">{{$game->description}}</article>
+                        </div>
+                    @endif
+                @endforeach
             </section>
-        </article>
+        @endforeach
     </section>
-@endsection
-@section('js')
-    <script>
-        $(document).ready(function() {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 18,
-                nav: true,
-                dots: false,
-                responsive: {
-                    0: {
-                        items: 2
-                    }
-                }
-            })
-            $('header').on('click', '.btn-burger', '.btn-back', function() {
-                $(this).toggleClass('active')
-                $('.nav').toggleClass('active')
-            })
-        })
-    </script>
 @endsection

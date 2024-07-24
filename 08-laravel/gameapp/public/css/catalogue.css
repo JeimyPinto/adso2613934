@@ -154,17 +154,62 @@
     opacity: 0.7;
     color: var(--color-second);
 }
-.categorie-title{
+.categorie-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    position: relative;
+}
+.categorie-section-title {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
     color: var(--color-second);
 }
-#categorie-articule-title-image{
+#categorie-section-title-image {
     width: 30px;
     height: 30px;
 }
-.owl-carousel {
-    margin-top: 1rem;
+.categorie-section-dots {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+#categorie-section-dot-prev,
+#categorie-section-dot-next {
+    cursor: pointer;
+}
+.game-section {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    border: 2px solid var(--color-second);
+    background: url(../images/bg-game-section.png) no-repeat center;
+    overflow: hidden;
+    color: var(--color-second);
+    border-radius: 20px;
+}
+.game-section-block1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game-section-block2 {
+    padding: 0 0.5rem;
+    text-overflow: ellipsis;
+}
+.game-section-img {
+    padding: 1rem;
+    border-radius: 20px;
+}
+.game-section-tittle {
+    font-size: 24px;
 }

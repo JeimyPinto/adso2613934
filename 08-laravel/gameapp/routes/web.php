@@ -1,16 +1,17 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GameController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/catalogue', function () {
-    return view('catalogue');
-});
+
+Route::get('/catalogue', [CategoryController::class, 'index'])->name('catalogue');
 
 Route::get('/games/list', function () {
     $games = App\Models\Game::all();

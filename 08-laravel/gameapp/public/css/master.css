@@ -97,16 +97,6 @@ body {
             height: 40px;
         }
     }
-
-    div.owl-item {
-        display: flex;
-        justify-content: center;
-
-        img {
-            width: 300px;
-            height: 300px;
-        }
-    }
 }
 .scroll {
     scrollbar-width: none;

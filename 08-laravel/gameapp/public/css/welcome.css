@@ -54,6 +54,6 @@
 }
 .owl-dot.active,
 .owl-dot:is(:hover) {
-    box-shadow: 2px 2px 5px var(--color-second);
+    box-shadow: 0 0 8px var(--color-fourth);
     transform: scale(1.2);
 }
