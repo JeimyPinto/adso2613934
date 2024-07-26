@@ -1,141 +1,16 @@
+/*--------------------------------------------*/
+/*----------0 2 - C A T A L O G U E-----------*/
+/*--------------------------------------------*/
 .catalogue {
-    /* section.scroll {
-        article {
-            display: flex;
-            flex-direction: column;
-
-            div.category-block {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                justify-items: center;
-                height: 50px;
-                margin-bottom: 1rem;
-                gap: 1rem;
-
-                img {
-                    display: flex;
-                    width: 50px;
-                }
-
-                h2 {
-                    color: var(--color-second);
-                    font-weight: 200;
-                    height: 65%;
-                }
-            }
-
-            figure {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                img {
-                    width: 134px;
-                    height: 134px;
-                }
-
-                figcaption {
-                    color: var(--color-second);
-                    font-size: 16px;
-                    font-weight: 400;
-                    margin-block: 0.6rem;
-                }
-            }
-
-            a:is(:link, :visited) {
-                color: var(--color-second);
-                height: 45px;
-                width: 120px;
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 1rem;
-                font-size: 24px;
-                font-weight: 300;
-                background: url("../images/bg-input-form.png") no-repeat center;
-
-                img {
-                    width: 18px;
-                }
-            }
-
-            a:is(:hover) {
-                background: url("../images/btn-hover.png") no-repeat center;
-            }
-
-            a:is(:active) {
-                background: url("../images/btn-active.png") no-repeat center;
-            }
-
-            section.owl-carousel {
-                margin-top: 0rem;
-                height: 280px;
-
-                div.owl-stage-outer {
-                    padding-left: 32px;
-
-                    div.owl-stage {
-                        div.owl-item.active {
-                            width: 160px !important;
-
-                            figure {
-                                figcaption {
-                                    display: flex;
-                                    height: 30px;
-                                    font-size: 16px;
-                                    white-space: nowrap;
-                                    text-overflow: ellipsis;
-                                }
-
-                                img {
-                                    border-radius: 30px;
-                                    border: 2px solid var(--color-second);
-                                    width: 150px !important;
-                                    height: 150px !important;
-                                }
-                            }
-
-                            a {
-                                border: 1px solid var(--color-second);
-                                border-radius: 20px;
-                                width: 150px;
-
-                                img {
-                                    width: 30px !important;
-                                    border: none;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                div.owl-nav {
-                    button {
-                        width: 35px !important;
-                        display: flex;
-                        justify-content: center;
-                        margin: 0px !important;
-                    }
-
-                    &:is(:hover) {
-                        button {
-                            transform: scale(1.1) translateX(0px);
-                        }
-                    }
-                }
-            }
-        }
-    } */
+    background-color: url(../images/views/02.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
 }
 #form-filter {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
     margin-top: 2rem;
 }
 #form-filter-input {
@@ -159,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     margin-top: 2rem;
     position: relative;
 }
@@ -174,42 +49,51 @@
     width: 30px;
     height: 30px;
 }
-.categorie-section-dots {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
+.game-carousel {
+    position: relative;
     width: 100%;
-    padding: 0 0.5rem;
-}
-#categorie-section-dot-prev,
-#categorie-section-dot-next {
-    cursor: pointer;
-}
-.game-section {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 200px;
-    border: 2px solid var(--color-second);
-    background: url(../images/bg-game-section.png) no-repeat center;
     overflow: hidden;
-    color: var(--color-second);
-    border-radius: 20px;
-}
-.game-section-block1 {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-.game-section-block2 {
-    padding: 0 0.5rem;
-    text-overflow: ellipsis;
+
+.game-section {
+    width: 70%;
+    padding: 0.5rem;
+    border: 1px solid var(--color-second);
+    border-radius: 20px;
+    gap: 0.5rem;
+    color: var(--color-second);
 }
 .game-section-img {
-    padding: 1rem;
     border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    padding: 0.5rem;
 }
-.game-section-tittle {
-    font-size: 24px;
+.categorie-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+button.prev,
+button.next {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
 }

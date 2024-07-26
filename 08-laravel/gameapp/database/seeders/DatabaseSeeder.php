@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             GameSeeder::class,
         ]);
 
-        User::factory(100)->create();
+        User::factory(20)->create();
     }
 }

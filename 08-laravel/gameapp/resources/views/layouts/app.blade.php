@@ -18,7 +18,23 @@
     <script src={{ asset('js/jquery-3.7.1.min.js') }}></script>
     <script src={{ asset('js/owl.carousel.min.js') }}></script>
     @yield('js')
+    <script>
+        $(document).ready(function() {
+            $('header').on('click', '.btn-burger', function() {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            });
+            $togglePass = false;
+            $('section').on('click', '.ico-eye', function() {
+                !$togglePass ? $(this).next().attr('type', 'text') :
+                    $(this).next().attr('type', 'password')
 
+                    !$togglePass ? $(this).attr('src', 'images/ico-eye-close.svg') :
+                    $(this).attr('src', 'images/ico-eye.svg')
+                $togglePass = !$togglePass
+            })
+        });
+    </script>
 </body>
 
 </html>

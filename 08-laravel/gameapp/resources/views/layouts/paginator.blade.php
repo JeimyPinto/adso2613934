@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav>
+    <nav class="navigate-paginate">
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
@@ -21,7 +21,7 @@
             @if ($paginator->hasMorePages())
                 <li>
                     <a href="{{ $paginator->nextPageUrl() }}" rel="next">
-                        <img src="images/ico-arrow-next.svg" alt="  ">
+                        <img src="images/ico-arrow-next.svg" alt=" ">
                     </a>
                 </li>
             @else

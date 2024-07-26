@@ -26,27 +26,65 @@
             <input type="text" placeholder="Filter" id="form-filter-input">
         </form>
         @foreach ($categories as $category)
-            <section class="categorie-section">
+            <section class="categorie-section categorie-items">
                 <div class="categorie-section-title">
                     <img src="{{ asset('images/slide01.png') }}" alt="categorie-image" id="categorie-section-title-image">
                     <h2>{{ $category->name }}</h2>
                 </div>
-                <div class="categorie-section-dots">
-                    <img src="{{ asset('images/btn-prev.svg') }}" alt="Btn-prev" id="categorie-section-dot-prev">
-                    <img src="{{ asset('images/btn-next.svg') }}" alt="Btn-next" id="categorie-section-dot-next">
+                <div class="game-carousel">
+                    @foreach ($games as $game)
+                        @if ($game->category_id == $category->id)
+                            <div class="game-section">
+                                <div class="categorie-item">
+                                    <img src="{{ asset('/images/games/' . $game->image) }}" alt=""
+                                        class="game-section-img">
+                                    <figcaption class="game-section-tittle">{{ $game->title }}</figcaption>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-                @foreach ($games as $game)
-                    @if ($game->category_id == $category->id)
-                        <div class="game-section">
-                            <figure class="game-section-block1">
-                                <img src="{{ asset('/images/games/' . $game->image) }}" alt="" class="game-section-img">
-                                <figcaption class="game-section-tittle">{{ $game->title }}</figcaption>
-                            </figure>
-                            <article class="game-section-block2">{{$game->description}}</article>
-                        </div>
-                    @endif
-                @endforeach
+                <button class="prev">
+                    <img src="{{ asset('images/btn-prev.svg') }}" alt="">
+                </button>
+                <button class="next">
+                    <img src="{{ asset('images/btn-next.svg') }}" alt="">
+                </button>
             </section>
         @endforeach
     </section>
+@endsection
+
+@section('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousels = document.querySelectorAll('.game-carousel');
+            carousels.forEach(carousel => {
+                let index = 0;
+                const items = carousel.querySelectorAll('.game-section');
+                const totalItems = items.length;
+
+                function showItem(index) {
+                    items.forEach((item, i) => {
+                        item.style.display = i === index ? 'block' : 'none';
+                    });
+                }
+
+                showItem(index);
+
+                const prevButton = carousel.parentElement.querySelector('.prev');
+                const nextButton = carousel.parentElement.querySelector('.next');
+
+                prevButton.addEventListener('click', () => {
+                    index = (index > 0) ? index - 1 : totalItems - 1;
+                    showItem(index);
+                });
+
+                nextButton.addEventListener('click', () => {
+                    index = (index < totalItems - 1) ? index + 1 : 0;
+                    showItem(index);
+                });
+            });
+        });
+    </script>
 @endsection
