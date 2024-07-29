@@ -21,7 +21,7 @@
 @auth
     <nav class="nav">
         <menu class="menu">
-            <a href={{ route('profile.index', ['id' => $user->id]) }} class="menu-option">
+            <a href={{ url('profile/show/' . $userLoged->id) }} class="menu-option">
                 <img src={{ asset('images/ico-profile.svg') }} class="menu-option-img" alt="Catalogue">
                 <span class="menu-option-span"> My Profile</span>
             </a>

@@ -24,35 +24,35 @@
         <article class="form section-profile-info">
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Name :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->fullname }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->fullname }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Document :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->document }}
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->document }}
                     @disabled(true)>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Role :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->role }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->role }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Email :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->email }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->email }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Birthdate :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->birthdate }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->birthdate }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label"class="section-profile-info-div-input">Phone :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->phone }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->phone }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Gender :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->gender }} disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $userLoged->gender }} disabled>
             </div>
             <footer class="footer">
-                <a href={{ route('profile.edit') }} class="btn">
+                <a href="" class="btn">
                     <span>Edit Info</span>
                     <div class="dot"></div>
                 </a>
