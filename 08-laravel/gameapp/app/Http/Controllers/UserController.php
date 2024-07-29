@@ -12,9 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $users = User::all();
+        $userLoged = auth()->user();
         $users = User::paginate(4);
-        return view('users.index')->with('users', $users);
+        return view('users.index')->with('users', $users)->with('userLoged', $userLoged);
     }
 
     /**

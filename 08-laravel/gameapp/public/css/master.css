@@ -303,6 +303,7 @@ body {
     height: 100px;
     justify-content: space-between;
     width: 350px;
+    margin-top: 1rem;
 }
 .article-info-user {
     width: 100px;
@@ -350,6 +351,11 @@ body {
     padding: 0;
     color: var(--color-second);
     list-style: none;
+}
+.paginate{
+    position: absolute;
+    top: 90%;
+    width: 100%;
 }
 @keyframes atom {
     0% {

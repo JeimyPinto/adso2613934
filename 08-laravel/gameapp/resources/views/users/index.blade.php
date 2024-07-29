@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', 'GameApp - Users Module')
-@section('class', 'module-users')
 
 @section('content')
     <header class="header">
