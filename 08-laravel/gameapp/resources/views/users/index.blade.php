@@ -16,7 +16,7 @@
     </header>
     @include('layouts.menuBurguer')
     <section class="module-info-resources">
-        <a href={{ url('profile/edit') }} class="btn">
+        <a href={{ url('users/create') }} class="btn">
             <span>Add</span>
             <div class="dot"></div>
         </a>

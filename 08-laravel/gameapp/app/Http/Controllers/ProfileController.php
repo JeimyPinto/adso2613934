@@ -16,7 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $userLoged = auth()->user();
+        $userLoged= Auth::user();
         return view('profile.index')->with('userLoged', $userLoged);
     }
 

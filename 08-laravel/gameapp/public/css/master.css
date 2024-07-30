@@ -352,7 +352,7 @@ body {
     color: var(--color-second);
     list-style: none;
 }
-.paginate{
+.paginate {
     position: absolute;
     top: 90%;
     width: 100%;
