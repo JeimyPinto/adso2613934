@@ -320,6 +320,8 @@ body {
     width: 86px;
     height: 86px;
     margin-left: 0.5rem;
+    object-fit: cover;
+    border-radius: 20px;
 }
 #module-info-resources-article-details,
 #module-info-resources-article-edit,
@@ -356,6 +358,12 @@ body {
     position: absolute;
     top: 90%;
     width: 100%;
+}
+.profile-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
 }
 @keyframes atom {
     0% {

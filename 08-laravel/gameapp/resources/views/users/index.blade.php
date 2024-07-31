@@ -29,7 +29,7 @@
                     <strong id="article-info-user-role">{{ $user->role }}</strong>
                 </div>
                 <div class="btns-crud">
-                    <a href="{{ url('users/' . $user->id . '/edit') }}">
+                    <a href="{{ url('users/' . $user->id) }}">
                         <img src="images/ico-details.svg" alt="" id="module-info-resources-article-details">
                     </a>
                     <a href="{{ url('users/' . $user->id . '/edit') }}">

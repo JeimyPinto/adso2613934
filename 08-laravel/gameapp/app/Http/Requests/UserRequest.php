@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use App\Models\User;
 
 class UserRequest extends FormRequest
@@ -22,16 +23,27 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'document' => ['required', 'numeric', 'unique:' . User::class],
-            'fullname' => ['required', 'string'],
-            'gender' => ['required', 'string'],
-            'birthdate' => ['required', 'date'],
-            'photo' => ['nullable', 'image'],
-            'phone' => ['required', 'string'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'unique:' . User::class],
-            'password' => ['required', 'confirmed'],
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'document' => ['required', 'numeric', Rule::unique('users')->ignore($this->user)],
+                'fullname' => ['required', 'string'],
+                'gender' => ['required', 'string'],
+                'birthdate' => ['required', 'date'],
+                'phone' => ['required', 'string'],
+                'email' => ['required', 'string', 'lowercase', 'email', Rule::unique('users')->ignore($this->user)],
+            ];
+        } else {
+            return [
+                'document' => ['required', 'numeric', 'unique:' . User::class],
+                'fullname' => ['required', 'string'],
+                'gender' => ['required', 'string'],
+                'birthdate' => ['required', 'date'],
+                'photo' => ['nullable', 'image'],
+                'phone' => ['required', 'string'],
+                'email' => ['required', 'string', 'lowercase', 'email', 'unique:' . User::class],
+                'password' => ['required', 'confirmed'],
+            ];
+        }
     }
 
     public function messages(): array
