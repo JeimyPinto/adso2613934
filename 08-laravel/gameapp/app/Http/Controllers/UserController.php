@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Summary of index
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -20,7 +21,8 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Summary of create
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -28,7 +30,9 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Summary of store
+     * @param \App\Http\Requests\UserRequest $request
+     * @return mixed|\Illuminate\Http\RedirectResponse
      */
     public function store(UserRequest $request)
     {
@@ -57,10 +61,15 @@ class UserController extends Controller
         if ($user->save()) {
             return redirect('users')->with('message', 'Usuario ' . $user->fullname . ' creado con éxito');
         }
+
+        // Add a return statement here
+        return redirect('users')->with('message', 'Error al crear el usuario');
     }
 
     /**
-     * Display the specified resource.
+     * Summary of show
+     * @param \App\Models\User $user
+     * @return mixed|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
     {
@@ -68,7 +77,9 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Summary of edit
+     * @param \App\Models\User $user
+     * @return mixed|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)
     {
@@ -76,12 +87,24 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Summary of update
+     * @param \App\Http\Requests\UserRequest $request
+     * @param \App\Models\User $user
+     * @return mixed|\Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         // Manejar la subida de la foto
         if ($request->hasFile('photo')) {
+            // Obtener la ruta de la foto actual
+            $currentPhotoPath = public_path('images/profile/' . $user->photo);
+
+            // Verificar si la foto actual existe y eliminarla
+            if (file_exists($currentPhotoPath)) {
+                unlink($currentPhotoPath);
+            }
+
+            // Subir la nueva foto
             $photo = $request->file('photo');
             $photoName = $photo->getClientOriginalName();
             $destinationPath = public_path('images/profile');
@@ -98,21 +121,41 @@ class UserController extends Controller
         $user->photo = $photoName;
         $user->phone = $request->phone;
         $user->email = $request->email;
+        $user->role = $request->role;
 
         // Guardar los cambios en el usuario
         if ($user->save()) {
             return redirect('users')->with('message', 'Usuario ' . $user->fullname . ' modificado con éxito');
         }
+
+        // Add a return statement here
+        return redirect('users')->with('message', 'Error al modificar el usuario');
     }
 
 
     /**
-     * Remove the specified resource from storage.
+     * Summary of destroy
+     * @param \App\Models\User $user
+     * @return mixed|\Illuminate\Http\RedirectResponse
      */
     public function destroy(User $user)
     {
         if ($user->delete()) {
             return redirect('users')->with('message', 'Usuario ' . $user->fullname . ' eliminado con éxito');
         }
+
+        // Add a return statement here
+        return redirect('users')->with('message', 'Error al eliminar el usuario');
+    }
+
+    /**
+     * Summary of search
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    public function search(Request $request)
+    {
+        $users = User::names($request->q)->paginate(4);
+        return view('users.search')->with('users', $users);
     }
 }

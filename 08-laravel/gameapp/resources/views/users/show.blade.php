@@ -31,7 +31,7 @@
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Document :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $user->document }}disabled>
+                <input type="text" class="section-profile-info-div-input" value={{ $user->document }} disabled>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Role :</strong>

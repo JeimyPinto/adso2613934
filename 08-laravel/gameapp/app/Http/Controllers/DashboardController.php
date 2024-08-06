@@ -14,11 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $games = Game::all();
-        $categories = Category::all();
-        $userLoged = auth()->user();
-        return view('dashboard')->with('users', $users)->with('games', $games)->with('categories', $categories)->with('userLoged', $userLoged);
+        return view('dashboard');
     }
 
     /**

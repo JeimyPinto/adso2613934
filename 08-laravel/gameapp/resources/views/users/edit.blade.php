@@ -20,7 +20,7 @@
     </header>
     @include('layouts.menuBurguer')
     <section class="scroll section-profile">
-        <form action="{{ url('users/' . $user->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('users/' . $user->id) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
             @method('PUT')
             <div class="form-group">

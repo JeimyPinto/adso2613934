@@ -20,6 +20,9 @@
             <span>Add</span>
             <div class="dot"></div>
         </a>
+        <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch ">
+    </section>
+    <section class="module-info-resources data">
         @foreach ($users as $user)
             <article class="module-info-resources-article">
                 <img src={{ asset('images/profile/' . $user->photo) }} class="module-info-resources-article-img"
@@ -35,9 +38,10 @@
                     <a href="{{ url('users/' . $user->id . '/edit') }}">
                         <img src="images/ico-edit.svg" alt="" id="module-info-resources-article-edit">
                     </a>
-                    <a href="">
+                    <button type="button" class="btn-delete" data-toggle="modal" data-target="#deleteModal"
+                        data-id="{{ $user->id }}">
                         <img src="images/ico-delete.svg" alt="" id="module-info-resources-article-delete">
-                    </a>
+                    </button>
                 </div>
             </article>
         @endforeach
@@ -45,4 +49,27 @@
     <div class="paginate">
         {{ $users->links('layouts.paginator') }}
     </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('.qsearch').on('keyup', function(e) {
+                e.preventDefault();
+                var query = $(this).val();
+                var token = $('input[name=_token]').val();
+                var model = 'users';
+
+                $.post(model + '/search', {
+                        q: query,
+                        _token: token
+                    },
+                    function(data) {
+                        $('.data').html(data);
+                    }
+                ).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error('Error en la solicitud: ' + textStatus, errorThrown);
+                });
+            });
+        });
+    </script>
 @endsection

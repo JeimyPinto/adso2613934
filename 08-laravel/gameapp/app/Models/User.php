@@ -67,4 +67,19 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Collection');
     }
+
+    /**
+     * Summary of scopeNames
+     * @param mixed $users
+     * @param mixed $query
+     * @return void
+     */
+    public function scopeNames($users, $q)
+    {
+        if (trim($q)) {
+            $users->where('fullname', 'LIKE', "%$q%")
+                ->orwhere('email', 'LIKE', "%$q%")
+                ->orwhere('document', 'LIKE', "%$q%");
+        }
+    }
 }
