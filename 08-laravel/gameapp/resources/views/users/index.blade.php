@@ -4,7 +4,7 @@
 @section('content')
     <header class="header">
         <a href="{{ url('dashboard') }}" class="btn-back">
-            <img src="images/btn-back.svg" alt="Back">
+            <img src={{ asset('images/btn-back.svg') }} alt="Back">
         </a>
         <h1 class="title">Users</h1>
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
@@ -15,13 +15,18 @@
         </svg>
     </header>
     @include('layouts.menuBurguer')
-    <section class="module-info-resources">
-        <a href={{ url('users/create') }} class="btn">
-            <span>Add</span>
-            <div class="dot"></div>
+    <div class="options-info-resources">
+        <a href={{ url('users/create') }} class="btn btn-short">
+            <span>+</span>
         </a>
-        <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch ">
-    </section>
+        <a href={{ url('export/users/pdf') }} class="btn btn-short">
+            <img src={{ asset('images/ico-pdf.svg') }} alt="">
+        </a>
+        <a href={{ url('export/users/excel') }} class="btn btn-short">
+            <img src={{ asset('images/ico-excel.svg') }} alt="">
+        </a>
+    </div>
+    <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch ">
     <section class="module-info-resources data">
         @foreach ($users as $user)
             <article class="module-info-resources-article">

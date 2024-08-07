@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
+use PDF;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -157,5 +160,17 @@ class UserController extends Controller
     {
         $users = User::names($request->q)->paginate(4);
         return view('users.search')->with('users', $users);
+    }
+
+    public function pdf()
+    {
+        $users = User::all();
+        $pdf = PDF::loadView('users.pdf', compact('users'));
+        return $pdf->setPaper('a4', 'landscape')->download('allusers.pdf');
+    }
+
+    public function excel()
+    {
+        return Excel::download(new UserExport, 'allusers.xlsx');
     }
 }
