@@ -6,7 +6,7 @@
         <a href="{{ url('users') }}" class="btn-back">
             <img src={{ asset('images/btn-back.svg') }} alt="Back">
         </a>
-        <h1 class="title">Users</h1>
+        <h1 class="title">Add user</h1>
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -50,7 +50,7 @@
                     <img src={{ asset('images/ico-full-name.svg') }} alt="">
                     Gender
                 </label>
-                <select name="gender" value="{{ old('gender') }}" class="form-group-input">
+                <select name="gender" value="{{ old('gender') }}" class="form-group-select">
                     <option value="male" class="form-group-input">Male</option>
                     <option value="female" class="form-group-input">Female</option>
                     <option value="other" class="form-group-input">Other</option>
@@ -99,7 +99,7 @@
             </div>
             <footer class="footer">
                 <button class="btn">
-                    <span>Register</span>
+                    <span>Add User</span>
                     <div class="dot"></div>
                 </button>
             </footer>

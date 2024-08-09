@@ -37,7 +37,7 @@ body:after {
 /*---------------------------------------*/
 
 body {
-    background: #000000ab;
+    background: black;
     font-family: var(--ff-body);
     font-weight: 100;
     font-style: normal;
@@ -291,6 +291,41 @@ body {
     color: var(--color-second);
     text-align: center;
 }
+.form-group-select {
+    background: linear-gradient(
+        to right,
+        var(--color-first),
+        var(--color-third)
+    );
+    padding: 0 1rem;
+    border: 3px solid var(--color-second);
+    border-radius: 20px;
+    width: 300px;
+    height: 60px;
+    color: var(--color-second);
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative; /* Necesario para el pseudo-elemento */
+}
+
+.form-group-select::after {
+    content: '▼'; /* Símbolo de flecha */
+    font-size: 1rem;
+    color: var(--color-second);
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Asegura que la flecha no interfiera con la selección */
+}
+
+.form-group-select option {
+    background: var(--color-first);
+    color: var(--color-second);
+    border-radius: 0 0 20px 20px;
+}
 .form-group-input::placeholder {
     color: var(--color-second);
 }
@@ -409,7 +444,7 @@ body {
     left: 10%;
     width: 80%;
     height: 50%;
-    background: rgba(0, 0, 0, 0.8   );
+    background: rgba(0, 0, 0, 0.8);
     padding: 0 2rem;
     z-index: 5;
 }
