@@ -20,14 +20,14 @@
             <span>+</span>
         </a>
         <a href={{ url('export/users/pdf') }} class="btn btn-short">
-            <img src={{ asset('images/ico-pdf.svg') }} alt="">
+            <img src={{ asset('images/ico-pdf.svg') }} alt="" class="btn-short-img">
         </a>
         <a href={{ url('export/users/excel') }} class="btn btn-short">
-            <img src={{ asset('images/ico-excel.svg') }} alt="">
+            <img src={{ asset('images/ico-excel.svg') }} alt="" class="btn-short-img">
         </a>
     </div>
     <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch ">
-    <section class="module-info-resources data">
+    <section class="module-info-resources">
         @foreach ($users as $user)
             <article class="module-info-resources-article">
                 <img src={{ asset('images/profile/' . $user->photo) }} class="module-info-resources-article-img"
@@ -47,10 +47,21 @@
                         data-id="{{ $user->id }}">
                         <img src="images/ico-delete.svg" alt="" id="module-info-resources-article-delete">
                     </button>
+                    <form action="{{ url('users/' . $user->id) }}" method="post" class="delete-form">
+                        @csrf
+                        @method('delete')
+                    </form>
                 </div>
             </article>
         @endforeach
     </section>
+    <div class="modal">
+        <span>
+            ¿Are you sure you want to delete this user?
+        </span>
+        <button type="button" class="btn btn-delete-modal" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-delete-modal" form="deleteForm">Delete</button>
+    </div>
     <div class="paginate">
         {{ $users->links('layouts.paginator') }}
     </div>
@@ -58,6 +69,19 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            $('.btn-delete').on('click', function() {
+                $('.modal').addClass('active'); // Corregir el selector del modal
+                var id = $(this).data('id');
+                var form = $('.delete-form');
+                var action = form.attr('action').slice(0, -1);
+                form.attr('action', action + id);
+            });
+
+            // Para cerrar el modal cuando se presiona el botón de cancelar
+            $('.btn-delete-modal[data-dismiss="modal"]').on('click', function() {
+                $('.modal').removeClass('active');
+            });
+
             $('.qsearch').on('keyup', function(e) {
                 e.preventDefault();
                 var query = $(this).val();
@@ -69,7 +93,7 @@
                         _token: token
                     },
                     function(data) {
-                        $('.data').html(data);
+                        $('.module-info-resources').html(data);
                     }
                 ).fail(function(jqXHR, textStatus, errorThrown) {
                     console.error('Error en la solicitud: ' + textStatus, errorThrown);

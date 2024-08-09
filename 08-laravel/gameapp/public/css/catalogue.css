@@ -54,10 +54,12 @@
     color: var(--color-second);
 }
 .game-section-img {
-    border-radius: 20px;
     width: 150px;
     height: 150px;
     padding: 0.5rem;
+    border-radius: 20px;
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    object-position: center; /* Centra la imagen dentro del contenedor */
 }
 .categorie-item {
     display: flex;
