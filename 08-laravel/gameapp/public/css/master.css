@@ -51,7 +51,7 @@ body {
     border-radius: 20px;
     width: 400px;
     height: 800px;
-    background: url(../images/bg-main.png) no-repeat center;
+    background: linear-gradient(var(--color-third), black);
     position: absolute;
 }
 .menu {
@@ -98,7 +98,7 @@ body {
 }
 .nav {
     position: absolute;
-    background-color: rgba(41, 40, 40, 0.6);
+    background-color: rgba(40, 40, 40, 0.8);
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     display: flex;
@@ -170,6 +170,7 @@ body {
     border-radius: 10px;
     width: 40px;
     height: 40px;
+    font-size: 14px;
 }
 .btn-short-img {
     width: 20px;
@@ -290,41 +291,7 @@ body {
     height: 60px;
     color: var(--color-second);
     text-align: center;
-}
-.form-group-select {
-    background: linear-gradient(
-        to right,
-        var(--color-first),
-        var(--color-third)
-    );
-    padding: 0 1rem;
-    border: 3px solid var(--color-second);
-    border-radius: 20px;
-    width: 300px;
-    height: 60px;
-    color: var(--color-second);
-    text-align: center;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative; /* Necesario para el pseudo-elemento */
-}
-
-.form-group-select::after {
-    content: '▼'; /* Símbolo de flecha */
-    font-size: 1rem;
-    color: var(--color-second);
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none; /* Asegura que la flecha no interfiera con la selección */
-}
-
-.form-group-select option {
-    background: var(--color-first);
-    color: var(--color-second);
-    border-radius: 0 0 20px 20px;
+        font-size: 20px;
 }
 .form-group-input::placeholder {
     color: var(--color-second);
@@ -454,6 +421,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+}
+.modal-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
 }
 /*animaciones*/
 @keyframes atom {

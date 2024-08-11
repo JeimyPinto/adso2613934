@@ -25,23 +25,6 @@
     color: #1ee8c1;
     font-size: 24px;
 }
-.section-profile-info-div-input {
-    background: url("../images/bg-input-form.png") no-repeat center;
-    border: none;
-    color: var(--color-second);
-    font-family: var(--ff-body);
-    font-size: 20px;
-    font-weight: 300;
-    height: 60px;
-    outline: none;
-    text-align: center;
-    width: 300px;
-}
-.section-profile-info-div-input::placeholder {
-    color: var(--color-second);
-    font-size: 20px;
-    font-weight: 300;
-}
 .section-profile-info-div-option {
     color: var(--color-second);
     background-color: var(--color-first);

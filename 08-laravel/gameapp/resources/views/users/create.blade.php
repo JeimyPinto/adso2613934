@@ -50,7 +50,7 @@
                     <img src={{ asset('images/ico-full-name.svg') }} alt="">
                     Gender
                 </label>
-                <select name="gender" value="{{ old('gender') }}" class="form-group-select">
+                <select name="gender" value="{{ old('gender') }}" class="form-group-input">
                     <option value="male" class="form-group-input">Male</option>
                     <option value="female" class="form-group-input">Female</option>
                     <option value="other" class="form-group-input">Other</option>

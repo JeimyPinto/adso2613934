@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 <head>
-    <link rel="stylesheet" href={{ asset('css/show-users.css') }}>
     <link rel="stylesheet" href={{ asset('css/show-profile.css') }}>
 </head>
 @section('title', 'GameApp - Edit User')
@@ -29,43 +28,43 @@
                 <input type="hidden" name="originphoto" value="{{ $user->photo }}">
                 <input type="hidden" name="id" value="{{ $user->photo }}">
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Name :</strong>
-                <input type="text" class="section-profile-info-div-input" name="fullname"
+                <input type="text" class="form-group-input" name="fullname"
                     value={{ old('fullname', $user->fullname) }}>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Document :</strong>
-                <input type="text" class="section-profile-info-div-input"
+                <input type="text" class="form-group-input"
                     name="document"value={{ old('document', $user->document) }}>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Role :</strong>
-                <select name="role" id="" class="section-profile-info-div-input">
+                <select name="role" id="" class="form-group-input">
                     <option class="section-profile-info-div-option" value="Administrador"
                         @if (old('gender', $user->role) == 'Administrador') selected @endif>Administrador</option>
                     <option class="section-profile-info-div-option" value="Customer"
                         @if (old('gender', $user->role) == 'Customer') selected @endif>Customer</option>
                 </select>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Email :</strong>
-                <input type="text" class="section-profile-info-div-input" name="email"
+                <input type="text" class="form-group-input" name="email"
                     value={{ old('email', $user->email) }}>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Birthdate :</strong>
-                <input type="text" class="section-profile-info-div-input" name="birthdate"
+                <input type="date" class="form-group-input" name="birthdate"
                     value={{ old('birthdate', $user->birthdate) }}>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label"class="section-profile-info-div-input">Phone :</strong>
-                <input type="text" class="section-profile-info-div-input"
+                <input type="text" class="form-group-input"
                     name="phone"value={{ old('phone', $user->phone) }}>
             </div>
-            <div class="section-profile-info-div">
+            <div class="form-group">
                 <strong class="section-profile-info-div-label">Gender :</strong>
-                <select name="gender" id="" class="section-profile-info-div-input">
+                <select name="gender" id="" class="form-group-input">
                     <option class="section-profile-info-div-option" value="Female"
                         @if (old('gender', $user->gender) == 'Female') selected @endif>Female</option>
                     <option class="section-profile-info-div-option" value="Male"

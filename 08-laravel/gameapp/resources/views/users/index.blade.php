@@ -59,8 +59,10 @@
         <span>
             ¿Are you sure you want to delete this user?
         </span>
-        <button type="button" class="btn btn-delete-modal" data-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-delete-modal" form="deleteForm">Delete</button>
+        <div class="modal-options">
+            <button type="button" class="btn btn-short" data-dismiss="modal">No</button>
+            <button type="submit" class="btn btn-short" form="deleteForm">Yes</button>
+        </div>
     </div>
     <div class="paginate">
         {{ $users->links('layouts.paginator') }}
