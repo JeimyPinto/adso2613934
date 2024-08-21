@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="show-profile.css">
 @section('title', 'GameApp - Profile')
 @section('class', 'profile')
 @section('content')

@@ -13,9 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        $games = Game::all();
-        return view('/catalogue')->with('categories', $categories)->with('games', $games);
+        $categories = Category::paginate(3);
+        return view('categories.index')->with('categories', $categories);
     }
 
     /**
@@ -23,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -31,7 +30,30 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('image')) {
+            $photo = $request->file('image');
+            $photoName = $request->file('image')->getClientOriginalName();
+
+            // Define la ruta de destino
+            $destinationPath = public_path('images/categories');
+
+            // Mueve el archivo a la ruta de destino
+            $photo->move($destinationPath, $photoName);
+        } else {
+            $photoName = 'categorie03.png';
+        }
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->image = $photoName;
+        $category->releasedate = $request->releasedate;
+        $category->save();
+
+        if($category->save()){
+            return redirect('categories')->with('message', 'La categoría fue creada con éxito');
+        }
+
+        return redirect('categories')->with('message', 'No se pudo crear la categoría');
     }
 
     /**
@@ -64,5 +86,11 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $categories = Category::names($request->name)->paginate(3);
+        return view('categories.index')->with('categories', $categories);
     }
 }

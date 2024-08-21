@@ -1,12 +1,16 @@
 @extends('layouts.app')
-@section('title', 'GameApp - Users Module')
+
+<head>
+    <link rel="stylesheet" href={{ asset('css/show-categories.css') }}>
+</head>
+@section('title', 'GameApp - Categories Module')
 
 @section('content')
     <header class="header">
         <a href="{{ url('dashboard') }}" class="btn-back">
             <img src={{ asset('images/btn-back.svg') }} alt="Back">
         </a>
-        <h1 class="title">Users</h1>
+        <h1 class="title">Categories</h1>
         <svg class="btn-burger" viewBox="0 0 100 100" width="80">
             <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
             <path class="line middle" d="m 70,50 h -40" />
@@ -16,38 +20,32 @@
     </header>
     @include('layouts.menuBurguer')
     <div class="options-info-resources">
-        <a href={{ url('users/create') }} class="btn btn-short">
-            <span>+</span>
-        </a>
-        <a href={{ url('export/users/pdf') }} class="btn btn-short">
-            <img src={{ asset('images/ico-pdf.svg') }} alt="" class="btn-short-img">
-        </a>
-        <a href={{ url('export/users/excel') }} class="btn btn-short">
-            <img src={{ asset('images/ico-excel.svg') }} alt="" class="btn-short-img">
+        <a href={{ url('categories/create') }} class="btn">
+            <span>+ Add</span>
         </a>
     </div>
-    <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch ">
+    <input name="qsearch" id="form-filter-input" type="text" placeholder="Filter" class="qsearch">
     <section class="module-info-resources">
-        @foreach ($users as $user)
+        @foreach ($categories as $category)
             <article class="module-info-resources-article">
-                <img src={{ asset('images/profile/' . $user->photo) }} class="module-info-resources-article-img"
+                <img src={{ asset('images/' . $category->image) }} class="module-info-resources-article-img"
                     alt="">
                 <div class="article-info-user">
-                    <span>{{ $user->fullname }}</span>
-                    <strong id="article-info-user-role">{{ $user->role }}</strong>
+                    <span>{{ $category->name }}</span>
+                    <span>{{ $category->description }}</span>
                 </div>
                 <div class="btns-crud">
-                    <a href="{{ url('users/' . $user->id) }}">
+                    <a href="{{ url('category/' . $category->id) }}">
                         <img src="images/ico-details.svg" alt="" id="module-info-resources-article-details">
                     </a>
-                    <a href="{{ url('users/' . $user->id . '/edit') }}">
+                    <a href="{{ url('category/' . $category->id . '/edit') }}">
                         <img src="images/ico-edit.svg" alt="" id="module-info-resources-article-edit">
                     </a>
                     <button type="button" class="btn-delete" data-toggle="modal" data-target="#deleteModal"
-                        data-id="{{ $user->id }}">
+                        data-id="{{ $category->id }}">
                         <img src="images/ico-delete.svg" alt="" id="module-info-resources-article-delete">
                     </button>
-                    <form action="{{ url('users/' . $user->id) }}" method="post" class="delete-form">
+                    <form action="{{ url('category/' . $category->id) }}" method="post" class="delete-form">
                         @csrf
                         @method('delete')
                     </form>
@@ -65,7 +63,7 @@
         </div>
     </div>
     <div class="paginate">
-        {{ $users->links('layouts.paginator') }}
+        {{ $categories->links('layouts.paginator') }}
     </div>
 @endsection
 @section('js')
@@ -73,12 +71,12 @@
         $(document).ready(function() {
             $('.btn-delete').on('click', function() {
                 $('.modal').addClass('active');
-                $('#btn-yes').on('click', ()=>{
+                $('#btn-yes').on('click', () => {
                     var id = $(this).data('id');
-                    $('.delete-form').attr('action', 'users/' + id);
+                    $('.delete-form').attr('action', 'categories/' + id);
                     $('.delete-form').submit();
                 });
-                $('#btn-no').on('click', ()=>{
+                $('#btn-no').on('click', () => {
                     $('.modal').removeClass('active');
                 });
             });
@@ -87,7 +85,7 @@
                 e.preventDefault();
                 var query = $(this).val();
                 var token = $('input[name=_token]').val();
-                var model = 'users';
+                var model = 'categories';
 
                 $.post(model + '/search', {
                         q: query,

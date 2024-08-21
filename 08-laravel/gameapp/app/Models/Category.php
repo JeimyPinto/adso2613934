@@ -16,7 +16,6 @@ class Category extends Model
     protected $fillable = [
         'name',
         'image',
-        'manufacturer',
         'releasedate',
         'description',
     ];
@@ -27,5 +26,13 @@ class Category extends Model
     public function games()
     {
         return $this->hasMany('App\Models\Game');
+    }
+
+    public function scopeNames($query, $name)
+    {
+        if ($name) {
+            return $query->where('name', 'LIKE', "%$name%")
+            ->orwhere('description', 'LIKE', "%$name%");
+        }
     }
 }

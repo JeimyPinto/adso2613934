@@ -69,10 +69,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Summary of scopeNames
-     * @param mixed $users
-     * @param mixed $query
-     * @return void
+     * Scope a query to only include users matching the search query.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $q
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeNames($users, $q)
     {
