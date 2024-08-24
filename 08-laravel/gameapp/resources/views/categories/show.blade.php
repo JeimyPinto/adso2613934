@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 <head>
+    <link rel="stylesheet" href={{ asset('css/show-profile.css') }}>
     <link rel="stylesheet" href={{ asset('css/show-categories.css') }}>
 </head>
 @section('title', 'GameApp - Show User')
@@ -20,7 +21,7 @@
     @include('layouts.menuBurguer')
     <section class="scroll section-profile">
         <article class="form section-profile-info">
-            <div class="form-group">
+            <div class="section-profile-info-div">
                 <img id="upload" class="mask" src={{ asset('images/' . $category->image) }} alt="Photo">
                 <input id="photo" type="file" name="photo" accept="image/*">
             </div>
@@ -37,7 +38,7 @@
                 <input type="text" class="section-profile-info-div-input" value={{ $category->releasedate }} disabled>
             </div>
             <footer class="footer">
-                <a href={{ route('users.edit', $category->id) }} class="btn">
+                <a href={{ url('categories', $category->id . '/edit') }} class="btn">
                     <span>Edit Category</span>
                     <div class="dot"></div>
                 </a>

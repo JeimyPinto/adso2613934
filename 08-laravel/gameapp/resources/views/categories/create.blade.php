@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label for="document" class="form-group-label">
-                    <img src={{ asset('images/ico-date.svg') }} alt="">
+                    <img src={{ asset('images/ico-year.svg') }} alt="">
                     Release Date
                 </label>
                 <input type="date" class="form-group-input" id="releasedate" name="releasedate" value="{{ old('description') }}"

@@ -87,7 +87,7 @@ class CategoryController extends Controller
             return redirect('categories')->with('message', 'La categoría fue actualizada con éxito');
         }
 
-        return redirect('categories')->with('message', 'No se pudo actualizar la categoría');
+        return redirect('categories.show')->with('message', 'No se pudo actualizar la categoría');
     }
 
     /**
