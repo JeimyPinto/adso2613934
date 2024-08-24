@@ -32,12 +32,13 @@
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Name :</strong>
                 <input type="text" class="section-profile-info-div-input" name="name"
-                    value={{ old('name', $category->name) }}>
+                    value="{{ old('name', $category->name) }}">
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Description :</strong>
-                <input type="text" class="section-profile-info-div-input"
-                    name="description" value="{{ old('description', $category->description) }}">
+                <textarea type="text" class="section-profile-info-div-input description" value="{{ $category->description }}"
+                    disabled> {{$category->description}}
+                </textarea>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Birthdate :</strong>

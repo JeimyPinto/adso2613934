@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 <head>
     <link rel="stylesheet" href={{ asset('css/show-categories.css') }}>
 </head>
@@ -37,24 +38,21 @@
                     <img src={{ asset('images/ico-full-name.svg') }} alt="icon-full-name">
                     Name
                 </label>
-                <input type="text" class="form-group-input" id="name" name="name" value="{{ old('name') }}"
+                <input type="text" class="section-profile-info-div-input" id="name" name="name"
                     placeholder="name">
             </div>
             <div class="form-group">
-                <label for="description" class="form-group-label">
-                    <img src={{ asset('images/ico-description.svg') }} alt="">
-                    Description
-                </label>
-                <input type="text" class="form-group-input" id="description" name="description" value="{{ old('description') }}"
-                    placeholder="description">
+                <strong class="form-group-label">Description :</strong>
+                <textarea type="text" class="section-profile-info-div-input description">
+                </textarea>
             </div>
             <div class="form-group">
                 <label for="document" class="form-group-label">
                     <img src={{ asset('images/ico-year.svg') }} alt="">
                     Release Date
                 </label>
-                <input type="date" class="form-group-input" id="releasedate" name="releasedate" value="{{ old('description') }}"
-                    placeholder="releasedate">
+                <input type="date" class="section-profile-info-div-input" id="releasedate" name="releasedate"
+                    value="{{ old('description') }}" placeholder="releasedate">
             </div>
             <footer class="footer">
                 <button class="btn">

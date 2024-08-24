@@ -474,6 +474,7 @@ body {
     align-items: center;
     gap: 5rem;
 }
+
 .section-profile-info-div-input {
     width: 300px;
     height: 60px;
@@ -485,6 +486,14 @@ body {
     margin-top: 0.5em;
     font-size: x-large;
 }
+
+.description {
+    height: 100px;
+    resize: vertical;
+    scrollbar-width: none;
+    padding-top: 1rem;
+}
+
 /*animaciones*/
 @keyframes atom {
     0% {

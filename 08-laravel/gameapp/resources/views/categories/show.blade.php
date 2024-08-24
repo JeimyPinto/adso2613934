@@ -27,11 +27,14 @@
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Name :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $category->name }} disabled>
+                <input type="text" class="section-profile-info-div-input" name="name"
+                    value="{{ old('name', $category->name) }}">
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Description :</strong>
-                <input type="text" class="section-profile-info-div-input" value={{ $category->description }} disabled>
+                <textarea type="text" class="section-profile-info-div-input description" value="{{ $category->description }}"
+                    disabled> {{ $category->description }}
+                </textarea>
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Release Date :</strong>
