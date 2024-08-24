@@ -4,8 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GameController;
-use App\Http\Controller\CatalogueController;
+use App\Http\Controllers\CatalogueController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    //GET, POST, PUT, DELETE
     Route::resources([
         'users' => UserController::class,
         'categories'=> CategoryController::class,

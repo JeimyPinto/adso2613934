@@ -61,7 +61,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show')->with('category', $category);
+
     }
 
     /**
@@ -69,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
@@ -77,7 +78,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->releasedate = $request->releasedate;
+        $category->save();
+
+        if($category->save()){
+            return redirect('categories')->with('message', 'La categoría fue actualizada con éxito');
+        }
+
+        return redirect('categories')->with('message', 'No se pudo actualizar la categoría');
     }
 
     /**
@@ -85,7 +95,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if($category->delete()){
+            return redirect('categories')->with('message', 'La categoría fue eliminada con éxito');
+        }
+
+        return redirect('categories')->with('message', 'No se pudo eliminar la categoría');
     }
 
     public function search(Request $request)
