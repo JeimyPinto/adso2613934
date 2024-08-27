@@ -23,10 +23,10 @@
         <form action="{{ url('categories/' . $category->id) }}" method="POST" enctype="multipart/form-data" class="form">
             @csrf
             @method('PUT')
+            <input type="hidden" name="originImage"  value="{{$category->image}}">
             <div class="section-profile-info-div">
-                <input id="photo" type="file" name="photo" accept="image/*">
-                <img id="upload" class="mask" src={{ asset('images/' . $category->image) }} alt="Photo">
-                <input type="hidden" name="originphoto" value="{{ $category->image }}">
+                <input id="photo" type="file" name="image" accept="image/*">
+                <img id="upload" class="mask" src={{ asset('images/' . $category->image) }} alt="image">                
                 <input type="hidden" name="id" value="{{ $category->image }}">
             </div>
             <div class="section-profile-info-div">
@@ -36,8 +36,8 @@
             </div>
             <div class="section-profile-info-div">
                 <strong class="section-profile-info-div-label">Description :</strong>
-                <textarea type="text" class="section-profile-info-div-input description" value="{{ $category->description }}"
-                    disabled> {{$category->description}}
+                <textarea type="text" class="section-profile-info-div-input description" name="description"
+                    value="{{ $category->description }}"> {{ $category->description }}
                 </textarea>
             </div>
             <div class="section-profile-info-div">

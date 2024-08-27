@@ -49,7 +49,7 @@ class CategoryController extends Controller
         $category->releasedate = $request->releasedate;
         $category->save();
 
-        if($category->save()){
+        if ($category->save()) {
             return redirect('categories')->with('message', 'La categoría fue creada con éxito');
         }
 
@@ -62,7 +62,6 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         return view('categories.show')->with('category', $category);
-
     }
 
     /**
@@ -78,12 +77,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        if ($request->hasFile('image')) {
+            $photo = $request->file('image');
+            $photoName = $request->file('image')->getClientOriginalName();
+            
+            // Define la ruta de destino
+            $destinationPath = public_path('images');
+            
+            // Mueve el archivo a la ruta de destino
+            $photo->move($destinationPath, $photoName);
+        } else {
+            $photoName = $request->originImage;
+        }
+        $category->image = $photoName;
         $category->name = $request->name;
         $category->description = $request->description;
         $category->releasedate = $request->releasedate;
         $category->save();
 
-        if($category->save()){
+        if ($category->save()) {
             return redirect('categories')->with('message', 'La categoría fue actualizada con éxito');
         }
 
@@ -95,7 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category->delete()){
+        if ($category->delete()) {
             return redirect('categories')->with('message', 'La categoría fue eliminada con éxito');
         }
 

@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <strong class="form-group-label">Description :</strong>
-                <textarea type="text" class="section-profile-info-div-input description">
+                <textarea type="text" class="section-profile-info-div-input description" name="description">
                 </textarea>
             </div>
             <div class="form-group">
