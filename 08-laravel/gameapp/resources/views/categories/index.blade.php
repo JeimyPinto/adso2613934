@@ -28,7 +28,7 @@
     <section class="module-info-resources">
         @foreach ($categories as $category)
             <article class="module-info-resources-article">
-                <img src={{ asset('images/' . $category->image) }} class="module-info-resources-article-img"
+                <img src={{ asset('images/categories/' . $category->image) }} class="module-info-resources-article-img"
                     alt="">
                 <div class="article-info-user">
                     <span>{{ $category->name }}</span>

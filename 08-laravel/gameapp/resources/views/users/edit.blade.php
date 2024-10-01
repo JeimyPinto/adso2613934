@@ -6,7 +6,7 @@
 @section('title', 'GameApp - Edit User')
 @section('content')
     <header class="header">
-        <a href="{{ url('/users/'. $user->id) }}" class="btn-back">
+        <a href="{{ url('users/'. $user->id) }}" class="btn-back">
             <img src={{ asset('images/btn-back.svg') }} alt="Back">
         </a>
         <h1 class="title  title-show-users">Edit User</h1>

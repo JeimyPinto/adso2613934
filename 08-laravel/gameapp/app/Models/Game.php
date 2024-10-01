@@ -49,4 +49,17 @@ class Game extends Model
     {
         return $this->belongsTo('App\Models\Collection');
     }
+    /**
+     * Summary of scopeNames
+     * @param mixed $query
+     * @param mixed $name
+     * @return void
+     */
+    public function scopeNames($query, $name)
+    {
+        if ($name) {
+            return $query->where('title', 'LIKE', "%$name%")
+                ->orwhere('developer', 'LIKE', "%$name%");
+        }
+    }
 }

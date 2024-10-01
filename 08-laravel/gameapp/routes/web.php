@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GameController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -31,12 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'users' => UserController::class,
         'categories'=> CategoryController::class,
+        'games' => GameController::class,
     ]);
 });
 
 Route::post('users/search', [UserController::class, 'search']);
-
 Route::post('categories/search',[CategoryController::class,'search']);
+Route::post('games/search',[GameController::class,'search']);
 
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
