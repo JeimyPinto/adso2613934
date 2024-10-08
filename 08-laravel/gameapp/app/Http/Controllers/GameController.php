@@ -6,6 +6,7 @@ use App\Models\Game;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\GameRequest;
+use Illuminate\Support\Facades\Auth;
 
 
 class GameController extends Controller
@@ -45,15 +46,17 @@ class GameController extends Controller
         } else {
             $photoName = 'no-game.png';
         }
-        $game = new Game();
+        $game = new Game;
         $game->title = $request->title;
         $game->image = $photoName;
         $game->developer = $request->developer;
         $game->releasedate = $request->releasedate;
         $game->category_id = $request->category_id;
-        $game->user_id = $request->user_id;
+        $game->user_id = Auth::user()->id;
         $game->price = $request->price;
-        $game->slider = $request->slider;    
+        $game->slider = $request->slider;
+        $game->description = $request->description;
+        $game->gender = $request->gender;
 
         if ($game->save()) {
             return redirect('games')->with('message', 'Juego ' . $game->title . ' creado con éxito');
@@ -68,7 +71,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return view('games.show')->with('game', $game);
     }
 
     /**
@@ -76,16 +79,53 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        $categories = Category::all();
+        return view('games.edit')->with('game', $game)->with('categories', $categories);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Game $game)
-    {
-        //
+    public function update(GameRequest $request, Game $game)
+{
+    // Manejar la subida de la imagen
+    if ($request->hasFile('image')) {
+        // Obtener la ruta de la imagen actual
+        $currentImagePath = public_path('images/games/' . $game->image);
+
+        // Verificar si la imagen actual existe y eliminarla
+        if (file_exists($currentImagePath) && $game->image !== 'no-game.png') {
+            unlink($currentImagePath);
+        }
+
+        // Subir la nueva imagen
+        $photo = $request->file('image');
+        $photoName = $photo->getClientOriginalName();
+        $destinationPath = public_path('images/games');
+        $photo->move($destinationPath, $photoName);
+    } else {
+        $photoName = $request->originphoto ?? $game->image;
     }
+
+    // Asignar los valores del formulario al juego
+    $game->title = $request->title;
+    $game->image = $photoName;
+    $game->developer = $request->developer;
+    $game->releasedate = $request->releasedate;
+    $game->category_id = $request->category_id;
+    $game->user_id = Auth::user()->id;
+    $game->price = $request->price;
+    $game->slider = $request->slider;
+    $game->description = $request->description;
+    $game->gender = $request->gender;
+
+    // Guardar los cambios en el juego
+    if ($game->save()) {
+        return redirect('games')->with('message', 'Juego ' . $game->title . ' modificado con éxito');
+    }
+
+    return redirect('games')->with('message', 'Error al modificar el juego');
+}
 
     /**
      * Remove the specified resource from storage.

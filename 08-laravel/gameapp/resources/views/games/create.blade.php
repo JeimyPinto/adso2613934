@@ -16,7 +16,7 @@
 </header>
 @include('layouts.menuBurguer')
 <section class="scroll">
-    <form action={{ url('games') }} method="POST" enctype="multipart/form-data" class="form">
+    <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data" class="form">
         @csrf
         @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
@@ -32,31 +32,26 @@
         <div class="form-group">
             <label for="fullname" class="form-group-label">
                 <img src={{ asset('images/ico-full-name.svg') }} alt="icon-full-name">
-                User
-            </label>
-            <span class="form-group-input" name="user_id">{{Auth::user()->fullname}}</span>
-        </div>
-        <div class="form-group">
-            <label for="fullname" class="form-group-label">
-                <img src={{ asset('images/ico-full-name.svg') }} alt="icon-full-name">
                 Title
             </label>
-            <input type="text" class="section-profile-info-div-input" id="title" name="title" placeholder="title">
+            <input type="text" class="section-profile-info-div-input" id="title" name="title" value="{{old('title')}}"
+                placeholder="title">
         </div>
         <div class="form-group">
             <label for="fullname" class="form-group-label">
                 <img src={{ asset('images/ico-full-name.svg') }} alt="icon-full-name">
                 Developer
             </label>
-            <input type="text" class="section-profile-info-div-input" id="name" name="developver"
-                placeholder="developver">
+            <input type="text" class="section-profile-info-div-input" id="name" name="developer"
+                value="{{old('developer')}}" placeholder="developer">
         </div>
         <div class="form-group">
             <label for="fullname" class="form-group-label">
                 <img src={{ asset('images/ico-details.svg') }} alt="icon-price">
                 Price
             </label>
-            <input type="text" class="section-profile-info-div-input" id="price" name="price" placeholder="price">
+            <input type="decimal" class="section-profile-info-div-input" id="price" name="price"
+                value="{{old('price')}}" placeholder="price">
         </div>
         <div class="form-group">
             <label for="document" class="form-group-label">
@@ -64,27 +59,39 @@
                 Release Date
             </label>
             <input type="date" class="section-profile-info-div-input" id="releasedate" name="releasedate"
-                value="{{ old('releasedate') }}" placeholder="releasedate">
+                value="{{old('releasedate')}}" value="{{ old('releasedate') }}" placeholder="releasedate">
         </div>
         <div class="form-group">
             <label class="form-group-label">
                 <img src="{{asset('images/ico-description.svg')}}" alt="">
                 Description
             </label>
-            <textarea type="text" class="section-profile-info-div-input description" name="description">
-                </textarea>
+            <textarea type="text" class="section-profile-info-div-input description"
+                name="description">{{old('description')}}</textarea>
         </div>
         <div class="form-group">
             <label for="category" class="form-group-label">
                 <img src={{ asset('images/ico-categories-module.svg') }} alt="">
                 Category
             </label>
-            <select name="gender" id="" class="section-profile-info-div-input">
+            <select name="category_id" id="" class="section-profile-info-div-input">
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="slider" class="form-group-label">
+                <img src={{ asset('images/ico-categories-module.svg') }} alt="">
+                Slider
+            </label>
+            <select name="slider" id="" class="section-profile-info-div-input">
+                <option value="">Select</option>
+                <option value="1" @if (old('slider') == 1) selected @endif>Active</option>
+                <option value="1" @if (old('slider') == 0) selected @endif>Inactive</option>
+            </select>
+        </div>
+        <input type="hidden" value="gender" name="gender">
         <footer class="footer">
             <button class="btn">
                 <span>Add Game</span>

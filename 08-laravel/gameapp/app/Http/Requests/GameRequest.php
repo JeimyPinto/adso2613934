@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Game;
+use Illuminate\Validation\Rule;
 
 
 class GameRequest extends FormRequest
@@ -23,17 +23,29 @@ class GameRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'title' => ['required', 'string'],
-            'image' => ['image', 'file'],
-            'developer' => ['required', 'string'],
-            'releadedate' => ['required', 'date'],
-            'category_id' => ['required', 'numeric'],
-            'user_id' => ['required', 'numeric'],
-            'price' => ['required', 'numeric'],
-            'gender' => ['required', 'string'],
-            'slider' => ['required', 'numeric'],
-            'description' => ['required', 'string'],
-        ];
+        if ($this->method() == 'PUT') {
+            return [
+                'title' => ['required', 'string', Rule::unique('games')->ignore($this->game)],
+                'developer' => ['required', 'string'],
+                'releasedate' => ['required', 'date'],
+                'category_id' => ['required'],
+                'price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                'gender' => ['required'],
+                'slider' => ['required'],
+                'description' => ['required'],
+            ];
+        } else {
+            return [
+                'title' => ['required', 'unique:games,title'],
+                'image' => ['required', 'image'],
+                'developer' => ['required', 'string'],
+                'releasedate' => ['required', 'date'],
+                'category_id' => ['required'],
+                'price' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
+                'gender' => ['required'],
+                'slider' => ['required'],
+                'description' => ['required'],
+            ];
+        }
     }
 }
