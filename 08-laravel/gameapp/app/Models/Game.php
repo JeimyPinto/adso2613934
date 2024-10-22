@@ -55,11 +55,11 @@ class Game extends Model
      * @param mixed $name
      * @return void
      */
-    public function scopeNames($query, $name)
+    public function scopeNames($query, $q)
     {
-        if ($name) {
-            return $query->where('title', 'LIKE', "%$name%")
-                ->orwhere('developer', 'LIKE', "%$name%");
+        if (trim($q)) {
+            return $query->where('title', 'LIKE', "%$q%")
+                ->orwhere('developer', 'LIKE', "%$q%");
         }
     }
 }

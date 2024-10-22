@@ -33,7 +33,7 @@
 <section class="module-info-resources">
     @foreach ($games as $game)
         <article class="module-info-resources-article">
-            <img src={{ asset('images/games/' . $game->image) }} class="module-info-resources-article-img" alt="">
+            <img src="{{ asset('images/games/' . $game->image) }}" class="module-info-resources-article-img" alt="">
             <div class="article-info-user">
                 <span>{{ $game->title }}</span>
                 <span>{{ $game->category->name }}</span>

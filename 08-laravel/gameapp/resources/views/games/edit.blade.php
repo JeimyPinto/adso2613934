@@ -28,7 +28,7 @@
         @endif
         <div class="form-group">
             <input id="photo" type="file" name="photo" accept="image/*">
-            <img id="upload" class="mask" src={{ asset('images/games/' . $game->image) }} alt="Photo">
+            <img id="upload" class="mask" src="{{ asset('images/games/' . $game->image) }}" alt="Photo">
             <input type="hidden" name="originphoto" value="{{ $game->image }}">
             <input type="hidden" name="id" value="{{ $game->image }}">
         </div>

@@ -6,7 +6,6 @@ use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GameController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,11 +13,6 @@ Route::get('/', function () {
 });
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
-
-Route::get('/games/', function () {
-    $games = App\Models\Game::all();
-    return view('listgames')->with('games', $games);
-});
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -42,5 +36,8 @@ Route::post('games/search',[GameController::class,'search']);
 
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
+
+Route::get('export/games/pdf', [GameController::class, 'pdf']);
+Route::get('export/games/excel', [GameController::class, 'excel']);
 
 require __DIR__ . '/auth.php';

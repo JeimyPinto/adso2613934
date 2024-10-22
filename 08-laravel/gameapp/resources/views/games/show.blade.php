@@ -22,7 +22,7 @@
 <section class="scroll section-profile">
     <article class="form section-profile-info">
         <div class="form-group">
-            <img id="upload" class="mask" src={{ asset('images/games/' . $game->image) }} alt="Photo">
+            <img id="upload" class="mask" src="{{ asset('images/games/' . $game->image) }}" alt="Photo">
             <input id="photo" type="file" name="photo" accept="image/*">
         </div>
         <div class="section-profile-info-div">
