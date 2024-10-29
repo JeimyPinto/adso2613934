@@ -9,7 +9,8 @@ use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $sliders = App\Models\Game::where('slider', 1)->get();
+    return view('welcome')->with('sliders', $sliders);
 });
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
@@ -25,14 +26,14 @@ Route::middleware('auth')->group(function () {
     //GET, POST, PUT, DELETE
     Route::resources([
         'users' => UserController::class,
-        'categories'=> CategoryController::class,
+        'categories' => CategoryController::class,
         'games' => GameController::class,
     ]);
 });
 
 Route::post('users/search', [UserController::class, 'search']);
-Route::post('categories/search',[CategoryController::class,'search']);
-Route::post('games/search',[GameController::class,'search']);
+Route::post('categories/search', [CategoryController::class, 'search']);
+Route::post('games/search', [GameController::class, 'search']);
 
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
@@ -40,4 +41,5 @@ Route::get('export/users/excel', [UserController::class, 'excel']);
 Route::get('export/games/pdf', [GameController::class, 'pdf']);
 Route::get('export/games/excel', [GameController::class, 'excel']);
 
+Route::post('import/users', [UserController::class, 'import']);
 require __DIR__ . '/auth.php';

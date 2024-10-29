@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use App\Exports\UserExport;
+use App\Imports\UserImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
@@ -171,5 +172,12 @@ class UserController extends Controller
     public function excel()
     {
         return Excel::download(new UserExport, 'allusers.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new UserImport, $file);
+        return redirect()->back()->with('message', 'Usuarios importados con éxito');
     }
 }

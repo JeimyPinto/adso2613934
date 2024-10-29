@@ -498,6 +498,10 @@ body {
     padding-top: 1rem;
 }
 
+.hidden {
+    display: none;
+}
+
 /*animaciones*/
 @keyframes atom {
     0% {
