@@ -7,13 +7,21 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\Game;
 
-Route::get('/', function () {
-    $sliders = App\Models\Game::where('slider', 1)->get();
-    return view('welcome')->with('sliders', $sliders);
-});
+Route::get('/', [CatalogueController::class, 'getSliders'])->name('home');
 
 Route::get('/catalogue', [CatalogueController::class, 'index'])->name('catalogue');
+Route::get('/catalogue/{id}', function (Request $request) {
+    $game = App\Models\Game::find($request->id);
+    return view('/view-game')->with('game', $game);
+});
+Route::get('catalogue/add/{id}', function () {
+    $game = App\Models\Game::find(request()->id);
+    dd($game->toArray());
+});
+Route::post('catalogue/search', [CatalogueController::class, 'search']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -33,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
 Route::post('users/search', [UserController::class, 'search']);
 Route::post('categories/search', [CategoryController::class, 'search']);
-Route::post('games/search', [GameController::class, 'search']);
+Route::post('games/search', [GameController::class, 'search'])->name('games.search');
 
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);

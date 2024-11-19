@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
+    @yield('css_link')
 </head>
 
 <body>
@@ -16,24 +17,24 @@
         @yield('content')
     </main>
     <script src={{ asset('js/jquery-3.7.1.min.js') }}></script>
-    @yield('js')
     <script>
-        $(document).ready(function() {
-            $('header').on('click', '.btn-burger', function() {
+        $(document).ready(function () {
+            $('header').on('click', '.btn-burger', function () {
                 $(this).toggleClass('active')
                 $('.nav').toggleClass('active')
             });
             $togglePass = false;
-            $('section').on('click', '.ico-eye', function() {
+            $('section').on('click', '.ico-eye', function () {
                 !$togglePass ? $(this).next().attr('type', 'text') :
                     $(this).next().attr('type', 'password')
 
-                    !$togglePass ? $(this).attr('src', 'images/ico-eye-close.svg') :
+                !$togglePass ? $(this).attr('src', 'images/ico-eye-close.svg') :
                     $(this).attr('src', 'images/ico-eye.svg')
                 $togglePass = !$togglePass
             })
         });
     </script>
+    @yield('js')
 </body>
 
 </html>

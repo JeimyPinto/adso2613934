@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-<head>
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
-</head>
+@section('css_link')
+<link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
+@endsection
 @section('title', 'GameApp - Welcome')
 @section('class', 'welcome')
 @section('content')
@@ -12,9 +12,11 @@
     </h1>
 </header>
 <section class="carousel">
-    @foreach ($sliders as $slider)
-        <img src="{{ asset('images/games/' . $slider->image) }}" alt="Logo de un juego" class="carousel-item">
-    @endforeach
+    <div class="carousel-inner">
+        @foreach ($sliders as $slider)
+            <img src="{{ asset('images/games/' . $slider->image) }}" alt="Logo de un juego" class="carousel-item">
+        @endforeach
+    </div>
     <div class="carousel-controls">
         <button class="carousel-prev">
             <img src="{{ asset('images/btn-prev.svg') }}" alt="Previous">
@@ -27,7 +29,6 @@
 <footer class="footer">
     <a href={{ url('catalogue') }} class="btn">
         <span>Enter</span>
-        <div class="dot"></div>
     </a>
 </footer>
 @endsection
@@ -35,58 +36,31 @@
 @section('js')
 <script>
     $(document).ready(function () {
-        $('.owl-carousel').owlCarousel({
-            center: true,
-            loop: true,
-            nav: true,
-            margin: 60,
-            dots: true,
-            responsive: {
-                0: {
-                    items: 1
-                }
-            }
-        });
-    }
-
-    );
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
         let currentIndex = 0;
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
+        const items = $('.carousel-item');
+        const itemCount = items.length;
 
+        /**
+         * Muestra el elemento en la posición index y oculta los demás.
+         * @param {number} index - Índice del elemento a mostrar.
+         * @returns {void}
+         */
         function showItem(index) {
-            items.forEach((item, i) => {
-                item.classList.remove('active', 'prev', 'next');
-                if (i === index) {
-                    item.classList.add('active');
-                } else if (i === (index - 1 + totalItems) % totalItems) {
-                    item.classList.add('prev');
-                } else if (i === (index + 1) % totalItems) {
-                    item.classList.add('next');
-                }
-            });
+            items.hide();
+            items.eq(index).show();
         }
 
-        function nextItem() {
-            currentIndex = (currentIndex + 1) % totalItems;
+        $('.carousel-next').click(function () {
+            currentIndex = (currentIndex + 1) % itemCount;
             showItem(currentIndex);
-        }
+        });
 
-        function prevItem() {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        $('.carousel-prev').click(function () {
+            currentIndex = (currentIndex - 1 + itemCount) % itemCount;
             showItem(currentIndex);
-        }
+        });
 
-        document.querySelector('.carousel-next').addEventListener('click', nextItem);
-        document.querySelector('.carousel-prev').addEventListener('click', prevItem);
-
-        // Auto-slide every 3 seconds
-        setInterval(nextItem, 5000);
-
-        // Show the first item initially
+        // Inicializa el carrusel mostrando el primer elemento
         showItem(currentIndex);
     });
 </script>

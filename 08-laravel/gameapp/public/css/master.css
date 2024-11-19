@@ -95,7 +95,7 @@ body {
 .scroll {
     scrollbar-width: none;
     overflow: scroll;
-    height: 630px;
+    height: 635px;
 }
 
 .scroll::-webkit-scrollbar {
@@ -285,9 +285,9 @@ body {
     background: url(../images/bg-input-filter.png) no-repeat center,
         url(../images/icon-filter.png) no-repeat 80% center;
     width: 100%;
-    height: 57px;
+    height: 40px;
     color: var(--color-second);
-    font-size: 28px;
+    font-size: 24px;
     text-indent: 80px;
     outline: none;
     margin-top: 1rem;

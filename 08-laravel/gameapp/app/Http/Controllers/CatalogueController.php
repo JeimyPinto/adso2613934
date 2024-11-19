@@ -18,51 +18,32 @@ class CatalogueController extends Controller
         return view('/catalogue')->with('categories', $categories)->with('games', $games);
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * función que se encarga de buscar los juegos que coincidan con la búsqueda
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        $query = $request->input('query');
+        $games = Game::with('category')
+            ->where('title', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->get();
+
+        $categories = $games->pluck('category')->unique('id');
+
+        return view('search', compact('games', 'categories'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Obtiene todos los juegos que tienen la propiedad slider en 1
+     * @return mixed|\Illuminate\Contracts\View\View
      */
-    public function store(Request $request)
+    public function getSliders()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $sliders = Game::where('slider', 1)->get();
+        return view('welcome')->with('sliders', $sliders);
     }
 }
