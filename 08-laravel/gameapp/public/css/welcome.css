@@ -116,6 +116,7 @@
 
 .carousel-item-short.active {
     display: flex;
+    z-index: 2;
 }
 
 .carousel-item-short img {

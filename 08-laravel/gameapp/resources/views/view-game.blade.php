@@ -46,7 +46,7 @@
         </div>
         <div class="categorie-section-div">
             <strong class="categorie-section-div-strong">Price</strong>
-            <span class="section-profile-info-div-span">{{$game->price}}</span>
+            <span class="section-profile-info-div-span">${{$game->price}}</span>
         </div>
         <div class="categorie-section-div">
             <strong class="categorie-section-div-strong">Slider</strong>
@@ -59,20 +59,28 @@
         <div class="categorie-section-div-btn">
             @guest
                 <a href="{{ url('/login') }}" class="btn not-allowed">
-                <span>Add to collection</span>
-                <div class="dot"></div>
+                    <span>Add to collection</span>
+                    <div class="dot"></div>
                 </a>
             @endguest
 
             @auth
                 @if (Auth::user()->role == 'Customer')
-                    <a href="{{ url('catalogue/add/' . $game->id) }}" class="btn">
-                        <span>Add to collection</span>
-                        <div class="dot"></div>
-                    </a>
-                @else
+                    @if (Auth::user()->collections->contains('game_id', $game->id))
+                        <a href="javascript:;" class="btn">
+                            <span>Added to collection</span>
+                            <div class="dot"></div>
+                        </a>
+                    @else
+                        <a href="{{ url('catalogue/add/' . $game->id) }}" class="btn">
+                            <span>Add to collection</span>
+                            <div class="dot"></div>
+                        </a>
+                    @endif
+                @elseif (Auth::user()->role == 'Administrador')
                     <a href="{{ route('games.edit', $game->id) }}" class="btn">
                         <span>Edit Info</span>
+                        <div class="dot"></div>
                     </a>
                 @endif
             @endauth
