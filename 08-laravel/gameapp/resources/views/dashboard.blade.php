@@ -7,7 +7,7 @@
 @section('class', 'dashboard')
 @section('content')
 <header class="header">
-    <a href="{{ url('/dashboard') }}" class="btn-back">
+    <a href="{{ url('/catalogue') }}" class="btn-back">
         <img src="images/btn-back.svg" alt="GameApp">
     </a>
     <h1 class="title">Dashboard</h1>

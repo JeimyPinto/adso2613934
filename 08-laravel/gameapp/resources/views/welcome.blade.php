@@ -12,11 +12,6 @@
     </h1>
 </header>
 <section class="carousel">
-    <div class="carousel-inner">
-        @foreach ($sliders as $slider)
-            <img src="{{ asset('images/games/' . $slider->image) }}" alt="Logo de un juego" class="carousel-item">
-        @endforeach
-    </div>
     <div class="carousel-controls">
         <button class="carousel-prev">
             <img src="{{ asset('images/btn-prev.svg') }}" alt="Previous">
@@ -25,6 +20,12 @@
             <img src="{{ asset('images/btn-next.svg') }}" alt="Next">
         </button>
     </div>
+    <div class="carousel-inner">
+        @foreach ($sliders as $slider)
+            <img src="{{ asset('images/games/' . $slider->image) }}" alt="Logo de un juego" class="carousel-item">
+        @endforeach
+    </div>
+
 </section>
 <footer class="footer">
     <a href={{ url('catalogue') }} class="btn">

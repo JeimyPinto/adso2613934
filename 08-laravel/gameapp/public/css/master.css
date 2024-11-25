@@ -95,7 +95,7 @@ body {
 .scroll {
     scrollbar-width: none;
     overflow: scroll;
-    height: 635px;
+    height: 625px;
 }
 
 .scroll::-webkit-scrollbar {
@@ -134,14 +134,12 @@ body {
     margin-top: 2rem;
     z-index: 3;
     position: relative;
+    color: var(--color-second);
 }
 
 .title {
     display: flex;
     justify-content: center;
-    font-size: var(--fs-title);
-    font-weight: 600;
-    color: var(--color-second);
     text-shadow: -3px -3px 0 var(--color-first), -3px -5px 0 var(--color-first),
         -3px 5px 0 var(--color-first), 5px 3px 0 var(--color-first);
 }
@@ -341,6 +339,7 @@ body {
     width: 250px;
     height: 250px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 #photo {

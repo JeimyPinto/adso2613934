@@ -8,48 +8,56 @@
         margin-top: 3.2rem;
     }
 }
+
 .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: relative;
     width: 100%;
-    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.carousel-catalogue {
+    margin-top: 1rem;
 }
 
 .carousel-inner {
     display: flex;
     justify-content: center;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 2s linear;
     padding-left: 1rem;
     padding-right: 1rem;
+    overflow: hidden;
+    width: 400px;
+    position: relative;
 }
 
 .carousel-item {
-    width: 350px;
-    height: 350px;
-    display: none;
-    padding: 1rem;
-    border-radius: 30px;
-}
-
-.carousel-item.active {
-    display: block;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 300px;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
+    text-decoration: none;
+    border-radius: 30px;
+    color: var(--color-second);
 }
 
 .carousel-controls {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 120px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    transform: translateY(-50%);
+    z-index: 1;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 }
 
-.carousel-prev, .carousel-next {
+.carousel-prev,
+.carousel-next {
     background: none;
     border: none;
     cursor: pointer;
@@ -63,4 +71,61 @@
 
 .carousel-controls button img {
     display: block;
+}
+
+/*--------------------------------------------*/
+/*----------0 2 - C A T A L O G U E-----------*/
+/*--------------------------------------------*/
+.catalogue {
+    background-color: url(../images/views/02.bg-frame.png) no-repeat;
+    height: 800px;
+    overflow: hidden;
+    width: 400px;
+}
+
+.carousel-section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-second);
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+
+.carousel-section-title img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.carousel-item-short {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    height: 200px;
+    border: 2px solid var(--color-second);
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--color-second);
+    overflow: hidden;
+    display: none; /* Oculta todos los elementos por defecto */
+}
+
+.carousel-item-short.active {
+    display: flex;
+}
+
+.carousel-item-short img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.carousel-item-short span {
+    flex-grow: 1;
 }
