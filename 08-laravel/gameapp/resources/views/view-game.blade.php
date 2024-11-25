@@ -60,7 +60,6 @@
             @guest
                 <a href="{{ url('/login') }}" class="btn not-allowed">
                     <span>Add to collection</span>
-                    <div class="dot"></div>
                 </a>
             @endguest
 
@@ -69,18 +68,15 @@
                     @if (Auth::user()->collections->contains('game_id', $game->id))
                         <a href="javascript:;" class="btn">
                             <span>Added to collection</span>
-                            <div class="dot"></div>
                         </a>
                     @else
                         <a href="{{ url('catalogue/add/' . $game->id) }}" class="btn">
                             <span>Add to collection</span>
-                            <div class="dot"></div>
                         </a>
                     @endif
                 @elseif (Auth::user()->role == 'Administrador')
                     <a href="{{ route('games.edit', $game->id) }}" class="btn">
                         <span>Edit Info</span>
-                        <div class="dot"></div>
                     </a>
                 @endif
             @endauth
